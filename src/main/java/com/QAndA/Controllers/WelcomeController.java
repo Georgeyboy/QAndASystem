@@ -4,6 +4,7 @@ import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.TemplateEngine;
@@ -18,6 +19,7 @@ import java.net.URI;
 @Controller
 @EnableAutoConfiguration
 @ComponentScan("com.QAndA")
+@Configuration
 public class WelcomeController {
 
 	@RequestMapping("/")
