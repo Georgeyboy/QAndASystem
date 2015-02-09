@@ -70,20 +70,19 @@ public class WelcomeController {
 
 
 	@Bean
-	public URI dbUrl() throws Exception{
-		URI uri = new URI("${DATABASE_URL}");
-		return uri;
-	}
+	public BasicDataSource dataSource() throws Exception{
+		BasicDataSource basicDataSource = new BasicDataSource();
+		URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
-	@Bean
-	public BasicDataSource dataSource(){
-		BasicDataSource bds = new BasicDataSource();
-		bds.setDriverClassName("${database.driverClassName}");
-		bds.setUrl("#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }");
-		bds.setUsername("#{ @dbUrl.getUserInfo().split(':')[0] }");
-		bds.setPassword("#{ @dbUrl.getUserInfo().split(':')[1] }");
+		String username = dbUri.getUserInfo().split(":")[0];
+		String password = dbUri.getUserInfo().split(":")[1];
+		String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 
-		return bds;
+		basicDataSource.setUrl(dbUrl);
+		basicDataSource.setUsername(username);
+		basicDataSource.setPassword(password);
+
+		return basicDataSource;
 	}
 
 }
