@@ -24,7 +24,7 @@ public class WelcomeController {
 
 	@RequestMapping("/")
 	String home() {
-		return "redirect:/index";
+		return "index";
 	}
 
 
