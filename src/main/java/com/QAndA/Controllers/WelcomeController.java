@@ -25,7 +25,7 @@ public class WelcomeController {
 	@RequestMapping("/")
 	@ResponseBody
 	String home() {
-		return "Hello World!";
+		return "index";
 	}
 
 
