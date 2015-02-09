@@ -23,9 +23,8 @@ import java.net.URI;
 public class WelcomeController {
 
 	@RequestMapping("/")
-	@ResponseBody
 	String home() {
-		return "index";
+		return "redirect:/index";
 	}
 
 
