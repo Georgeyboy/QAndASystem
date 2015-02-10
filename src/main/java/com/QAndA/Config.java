@@ -17,7 +17,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import java.net.URI;
 
 @EnableAutoConfiguration
-@ComponentScan("com.QAndA")
+@ComponentScan
 @Configuration
 public class Config {
 
