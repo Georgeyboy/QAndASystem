@@ -32,30 +32,30 @@ public class Config {
 	}
 
 
-	/**
-	 * Heroku specific Basic Data Source
-	 * @return
-	 * @throws Exception
-	 */
-	@Bean
-	public BasicDataSource dataSource() throws URISyntaxException {
-		URI dbUri = new URI(System.getenv("DATABASE_URL"));
-
-		String username = dbUri.getUserInfo().split(":")[0];
-		String password = dbUri.getUserInfo().split(":")[1];
-		String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
-
-		BasicDataSource basicDataSource = new BasicDataSource();
-		basicDataSource.setUrl(dbUrl);
-		basicDataSource.setUsername(username);
-		basicDataSource.setPassword(password);
-
-		System.out.println("URL : " + dbUrl);
-		System.out.println("user : " + username);
-		System.out.println("password : " + password);
-
-		return basicDataSource;
-	}
+//	/**
+//	 * Heroku specific Basic Data Source
+//	 * @return
+//	 * @throws Exception
+//	 */
+//	@Bean
+//	public BasicDataSource dataSource() throws URISyntaxException {
+//		URI dbUri = new URI(System.getenv("DATABASE_URL"));
+//
+//		String username = dbUri.getUserInfo().split(":")[0];
+//		String password = dbUri.getUserInfo().split(":")[1];
+//		String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+//
+//		BasicDataSource basicDataSource = new BasicDataSource();
+//		basicDataSource.setUrl(dbUrl);
+//		basicDataSource.setUsername(username);
+//		basicDataSource.setPassword(password);
+//
+//		System.out.println("URL : " + dbUrl);
+//		System.out.println("user : " + username);
+//		System.out.println("password : " + password);
+//
+//		return basicDataSource;
+//	}
 
 //	@Bean(name = "sessionFactory")
 //	public SessionFactory sessionFactory(DataSource dataSource) {
