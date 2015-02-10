@@ -42,23 +42,23 @@ public class WelcomeController {
 		SpringApplication.run(WelcomeController.class, args);
 	}
 
-	@Bean
-	public TemplateResolver templateResolver(){
-		ServletContextTemplateResolver tr = new ServletContextTemplateResolver();
-		tr.setPrefix("/templates");
-		tr.setSuffix(".html");
-		tr.setTemplateMode("HTML5");
-
-		return tr;
-	}
-
-	@Bean
-	public SpringTemplateEngine templateEngine(){
-		SpringTemplateEngine te = new SpringTemplateEngine();
-		te.setTemplateResolver(templateResolver());
-
-		return te;
-	}
+//	@Bean
+//	public TemplateResolver templateResolver(){
+//		ServletContextTemplateResolver tr = new ServletContextTemplateResolver();
+//		tr.setPrefix("/templates");
+//		tr.setSuffix(".html");
+//		tr.setTemplateMode("HTML5");
+//
+//		return tr;
+//	}
+//
+//	@Bean
+//	public SpringTemplateEngine templateEngine(){
+//		SpringTemplateEngine te = new SpringTemplateEngine();
+//		te.setTemplateResolver(templateResolver());
+//
+//		return te;
+//	}
 //
 //
 //	@Bean

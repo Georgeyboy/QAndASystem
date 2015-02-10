@@ -36,12 +36,13 @@
       <file leaf-file-name="WelcomeController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Controllers/WelcomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5413153" vertical-offset="495" max-vertical-offset="1598">
-              <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.6848674" vertical-offset="496" max-vertical-offset="1598">
+              <caret line="55" column="16" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#875#876#0" expanded="true" />
                 <element signature="e#896#897#0" expanded="true" />
+                <marker date="1423528730658" expanded="true" signature="1251:1687" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -674,12 +675,12 @@
       <updated>1423151703940</updated>
       <workItem from="1423151706886" duration="1873000" />
       <workItem from="1423434565976" duration="8099000" />
-      <workItem from="1423486079255" duration="12408000" />
+      <workItem from="1423486079255" duration="13101000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22380000" />
+    <option name="totallyTimeSpent" value="23073000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -690,7 +691,7 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32792208" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27597404" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -764,6 +765,7 @@
             <element signature="imports" expanded="true" />
             <element signature="e#875#876#0" expanded="true" />
             <element signature="e#896#897#0" expanded="true" />
+            <marker date="1423528730658" expanded="true" signature="1251:1687" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -784,6 +786,7 @@
             <element signature="imports" expanded="true" />
             <element signature="e#875#876#0" expanded="true" />
             <element signature="e#896#897#0" expanded="true" />
+            <marker date="1423528730658" expanded="true" signature="1251:1687" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -909,12 +912,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Controllers/WelcomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5413153" vertical-offset="495" max-vertical-offset="1598">
-          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.6848674" vertical-offset="496" max-vertical-offset="1598">
+          <caret line="55" column="16" selection-start-line="55" selection-start-column="16" selection-end-line="55" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#875#876#0" expanded="true" />
             <element signature="e#896#897#0" expanded="true" />
+            <marker date="1423528730658" expanded="true" signature="1251:1687" placeholder="..." />
           </folding>
         </state>
       </provider>
