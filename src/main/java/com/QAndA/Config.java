@@ -50,6 +50,10 @@ public class Config {
 		basicDataSource.setUsername(username);
 		basicDataSource.setPassword(password);
 
+		System.out.println("URL : " + dbUrl);
+		System.out.println("user : " + username);
+		System.out.println("password : " + password);
+
 		return basicDataSource;
 	}
 
