@@ -70,36 +70,36 @@ public class Config {
 		return basicDataSource;
 	}
 
-	@Bean(name = "sessionFactory")
-	public SessionFactory sessionFactory(DataSource dataSource) {
-
-		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
-
-		//List persisted classes here
-
-//		sessionBuilder.addAnnotatedClasses(User.class, Item.class);
-		sessionBuilder.addProperties(getHibernateProperties());
-
-		return sessionBuilder.buildSessionFactory();
-	}
-
-	private Properties getHibernateProperties() {
-		Properties properties = new Properties();
-		properties.put("hibernate.show_sql", "true");
-		properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-		properties.put("hibernate.hbm2ddl.auto", "update");
-		return properties;
-	}
-
-	/**
-	 * Allows use of @Transactional tags
-	 * @param sessionFactory appropriate session factory
-	 * @return transactionManager
-	 */
-	@Bean
-	public HibernateTransactionManager TransactionManager(SessionFactory sessionFactory) {
-		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
-		return transactionManager;
-	}
+//	@Bean(name = "sessionFactory")
+//	public SessionFactory sessionFactory(DataSource dataSource) {
+//
+//		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
+//
+//		//List persisted classes here
+//
+////		sessionBuilder.addAnnotatedClasses(User.class, Item.class);
+//		sessionBuilder.addProperties(getHibernateProperties());
+//
+//		return sessionBuilder.buildSessionFactory();
+//	}
+//
+//	private Properties getHibernateProperties() {
+//		Properties properties = new Properties();
+//		properties.put("hibernate.show_sql", "true");
+//		properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+//		properties.put("hibernate.hbm2ddl.auto", "update");
+//		return properties;
+//	}
+//
+//	/**
+//	 * Allows use of @Transactional tags
+//	 * @param sessionFactory appropriate session factory
+//	 * @return transactionManager
+//	 */
+//	@Bean
+//	public HibernateTransactionManager TransactionManager(SessionFactory sessionFactory) {
+//		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
+//		return transactionManager;
+//	}
 
 }
