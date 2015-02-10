@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -20,6 +21,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
 import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 import java.net.URI;
 import java.util.Properties;
 
@@ -68,41 +70,36 @@ public class Config {
 		return basicDataSource;
 	}
 
-//	@Bean
-//	public SessionFactory sessionFactory() throws Exception{
-//		LocalSessionFactoryBean sf = new LocalSessionFactoryBean();
-//		sf.setDataSource(dataSource());
-//
-//		Properties hibernateProperties = new Properties();
-//		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-//		hibernateProperties.setProperty("hibernate.hbm2ddl", "update");
-//
-//		sf.setHibernateProperties(hibernateProperties);
-//
-//		return sf;
-//	}
+	@Bean(name = "sessionFactory")
+	public SessionFactory sessionFactory(DataSource dataSource) {
 
-	@Bean
-	public JpaTransactionManager transactionManager() throws Exception{
-		JpaTransactionManager transactionManager = new JpaTransactionManager();
-		transactionManager.setDataSource(dataSource());
-		transactionManager.setEntityManagerFactory(entityManagerFactory());
+		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 
-		return transactionManager;
+		//List persisted classes here
+
+//		sessionBuilder.addAnnotatedClasses(User.class, Item.class);
+		sessionBuilder.addProperties(getHibernateProperties());
+
+		return sessionBuilder.buildSessionFactory();
 	}
 
+	private Properties getHibernateProperties() {
+		Properties properties = new Properties();
+		properties.put("hibernate.show_sql", "true");
+		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+		properties.put("hibernate.hbm2ddl.auto", "update");
+		return properties;
+	}
+
+	/**
+	 * Allows use of @Transactional tags
+	 * @param sessionFactory appropriate session factory
+	 * @return transactionManager
+	 */
 	@Bean
-	public EntityManagerFactory entityManagerFactory() throws Exception{
-		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-		emf.setDataSource(dataSource());
-		emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-
-		Properties hibernateProperties = new Properties();
-		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-		hibernateProperties.setProperty("hibernate.hbm2ddl", "update");
-		emf.setJpaProperties(hibernateProperties);
-
-		return (EntityManagerFactory) emf;
+	public HibernateTransactionManager TransactionManager(SessionFactory sessionFactory) {
+		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
+		return transactionManager;
 	}
 
 }
