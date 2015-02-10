@@ -13,5 +13,11 @@ public class HomeController {
 		System.out.println("HomeController found!");
 	}
 
+	@RequestMapping("/")
+	public String home() {
+		System.out.println("Home controller '/' hit");
+		return "index";
+	}
+
 
 }
