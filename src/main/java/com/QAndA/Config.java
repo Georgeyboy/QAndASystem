@@ -1,4 +1,4 @@
-package com.QAndA.Controllers;
+package com.QAndA;
 
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
@@ -7,25 +7,21 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.spring4.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+//import org.thymeleaf.TemplateEngine;
+//import org.thymeleaf.spring4.SpringTemplateEngine;
+//import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+//import org.thymeleaf.templateresolver.TemplateResolver;
+//import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.net.URI;
 
-@Controller
 @EnableAutoConfiguration
 @ComponentScan("com.QAndA")
 @Configuration
-public class WelcomeController {
+public class Config {
 
-	@RequestMapping("/")
-	String home() {
-		return "index";
-	}
+
 
 
 	/**
@@ -39,35 +35,9 @@ public class WelcomeController {
 			webPort = "8080";
 		}
 		System.setProperty("server.port", webPort);
-		SpringApplication.run(WelcomeController.class, args);
+		SpringApplication.run(Config.class, args);
 	}
 
-//	@Bean
-//	public TemplateResolver templateResolver(){
-//		ServletContextTemplateResolver tr = new ServletContextTemplateResolver();
-//		tr.setPrefix("/templates");
-//		tr.setSuffix(".html");
-//		tr.setTemplateMode("HTML5");
-//
-//		return tr;
-//	}
-//
-//	@Bean
-//	public SpringTemplateEngine templateEngine(){
-//		SpringTemplateEngine te = new SpringTemplateEngine();
-//		te.setTemplateResolver(templateResolver());
-//
-//		return te;
-//	}
-//
-//
-//	@Bean
-//	public ThymeleafViewResolver thymeleafViewResolver(){
-//		ThymeleafViewResolver vr = new ThymeleafViewResolver();
-//		vr.setTemplateEngine(templateEngine());
-//
-//		return vr;
-//	}
 
 
 	@Bean
