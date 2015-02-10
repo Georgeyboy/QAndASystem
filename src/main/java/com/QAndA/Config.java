@@ -22,8 +22,6 @@ import java.net.URI;
 public class Config {
 
 
-
-
 	/**
 	 * Server Start point
 	 * @param args

@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 
+	public HomeController(){
+		System.out.println("HomeController found!");
+	}
+
 	@RequestMapping("/")
 	String home() {
+		System.out.println("HomeController route '/' found!");
 		return "index";
 	}
 }
