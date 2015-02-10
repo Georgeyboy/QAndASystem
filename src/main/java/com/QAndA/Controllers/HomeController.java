@@ -4,8 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by George on 10/02/2015.
- */
+* Created by George on 10/02/2015.
+*/
 @Controller
 public class HomeController {
 
@@ -14,9 +14,15 @@ public class HomeController {
 	}
 
 	@RequestMapping("/")
-	public String home() {
-		System.out.println("Home controller '/' hit");
+	public String index() {
+		System.out.println("HomeController '/' hit");
 		return "index";
+	}
+
+	@RequestMapping("/test")
+	public String test(){
+		System.out.println("HomeController '/test' hit");
+		return "test";
 	}
 
 

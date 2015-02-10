@@ -5,16 +5,13 @@ import org.springframework.boot.autoconfigure.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.*;
-import org.springframework.web.bind.annotation.*;
-//import org.thymeleaf.TemplateEngine;
-//import org.thymeleaf.spring4.SpringTemplateEngine;
-//import org.thymeleaf.spring4.view.ThymeleafViewResolver;
-//import org.thymeleaf.templateresolver.TemplateResolver;
-//import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.view.ThymeleafViewResolver;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+import org.thymeleaf.templateresolver.TemplateResolver;
 
-import java.net.URI;
 
 @EnableAutoConfiguration
 @ComponentScan("com.QAndA")
@@ -40,20 +37,21 @@ public class Config {
 
 
 
-	@Bean
-	public BasicDataSource dataSource() throws Exception{
-		BasicDataSource basicDataSource = new BasicDataSource();
-		URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
-		String username = dbUri.getUserInfo().split(":")[0];
-		String password = dbUri.getUserInfo().split(":")[1];
-		String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
-
-		basicDataSource.setUrl(dbUrl);
-		basicDataSource.setUsername(username);
-		basicDataSource.setPassword(password);
-
-		return basicDataSource;
-	}
+//	@Bean
+//	public BasicDataSource dataSource() throws Exception{
+//		BasicDataSource basicDataSource = new BasicDataSource();
+//		URI dbUri = new URI(System.getenv("DATABASE_URL"));
+//
+//		String username = dbUri.getUserInfo().split(":")[0];
+//		String password = dbUri.getUserInfo().split(":")[1];
+//		String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+//
+//		basicDataSource.setUrl(dbUrl);
+//		basicDataSource.setUsername(username);
+//		basicDataSource.setPassword(password);
+//
+//		return basicDataSource;
+//	}
 
 }
