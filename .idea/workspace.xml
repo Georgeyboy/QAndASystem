@@ -36,8 +36,8 @@
       <file leaf-file-name="WelcomeController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Controllers/WelcomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3693086" vertical-offset="801" max-vertical-offset="1598">
-              <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.5413153" vertical-offset="495" max-vertical-offset="1598">
+              <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#875#876#0" expanded="true" />
@@ -674,12 +674,12 @@
       <updated>1423151703940</updated>
       <workItem from="1423151706886" duration="1873000" />
       <workItem from="1423434565976" duration="8099000" />
-      <workItem from="1423486079255" duration="12268000" />
+      <workItem from="1423486079255" duration="12408000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22240000" />
+    <option name="totallyTimeSpent" value="22380000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -909,8 +909,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Controllers/WelcomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3693086" vertical-offset="801" max-vertical-offset="1598">
-          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.5413153" vertical-offset="495" max-vertical-offset="1598">
+          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#875#876#0" expanded="true" />
