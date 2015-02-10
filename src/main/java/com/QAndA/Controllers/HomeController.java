@@ -13,9 +13,5 @@ public class HomeController {
 		System.out.println("HomeController found!");
 	}
 
-	@RequestMapping("/")
-	String home() {
-		System.out.println("HomeController route '/' found!");
-		return "index";
-	}
+
 }

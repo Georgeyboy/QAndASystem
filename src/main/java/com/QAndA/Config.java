@@ -19,6 +19,7 @@ import java.net.URI;
 @EnableAutoConfiguration
 @ComponentScan
 @Configuration
+@Controller
 public class Config {
 
 
@@ -36,6 +37,11 @@ public class Config {
 		SpringApplication.run(Config.class, args);
 	}
 
+	@RequestMapping("/")
+	String home() {
+		System.out.println("HomeController route '/' found!");
+		return "index";
+	}
 
 
 	@Bean
