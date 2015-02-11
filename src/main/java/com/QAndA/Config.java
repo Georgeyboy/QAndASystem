@@ -1,5 +1,6 @@
 package com.QAndA;
 
+import com.QAndA.DAO.UserDao;
 import com.QAndA.Domain.Answer;
 import com.QAndA.Domain.Notification;
 import com.QAndA.Domain.Question;

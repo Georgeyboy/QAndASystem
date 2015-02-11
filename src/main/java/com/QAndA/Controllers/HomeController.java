@@ -1,5 +1,8 @@
 package com.QAndA.Controllers;
 
+import com.QAndA.DAO.UserDao;
+import com.QAndA.Domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 */
 @Controller
 public class HomeController {
+
+	@Autowired
+	private UserDao userDao;
 
 	public HomeController(){
 		System.out.println("HomeController found!");
@@ -23,6 +29,16 @@ public class HomeController {
 	public String test(){
 		System.out.println("HomeController '/test' hit");
 		return "test";
+	}
+
+	@RequestMapping("/addTestUser")
+	public String addTestUser(){
+		System.out.println("Adding test user");
+		User user = new User();
+		user.setfName("George");
+		user.setlName("Harris");
+		userDao.save(user);
+		return "Test";
 	}
 
 
