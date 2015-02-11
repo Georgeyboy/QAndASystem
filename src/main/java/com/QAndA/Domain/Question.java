@@ -16,7 +16,6 @@ public class Question {
 	private long id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user")
 	private User user;
 
 	private String title;

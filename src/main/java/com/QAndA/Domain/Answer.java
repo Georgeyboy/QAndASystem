@@ -15,13 +15,11 @@ public class Answer {
 	private long id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user")
 	private User user;
 
 	private String answer;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "question")
 	private Question question;
 
 	public long getId() {
