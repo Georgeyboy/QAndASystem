@@ -30,11 +30,18 @@
         </dependency>
 
         <!-- #### Data #### -->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.commons</groupId>-->
+            <!--<artifactId>commons-dbcp2</artifactId>-->
+            <!--<version>2.0.1</version>-->
+        <!--</dependency>-->
+
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
-            <version>2.0.1</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>4.1.4.RELEASE</version>
         </dependency>
+
 
         <!-- postgresql -->
         <dependency>
@@ -49,6 +56,15 @@
             <artifactId>hibernate-core</artifactId>
             <version>4.3.6.Final</version>
         </dependency>
+
+
+        <!-- JPA(?) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>4.1.4.RELEASE</version>
+        </dependency>
+
 
 
     </dependencies>
