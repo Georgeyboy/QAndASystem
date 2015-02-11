@@ -61,10 +61,10 @@ public class Config {
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 
 //		Annotated classes
-		sessionBuilder.addAnnotatedClasses(User.class);
 		sessionBuilder.addAnnotatedClasses(Notification.class);
 		sessionBuilder.addAnnotatedClasses(Answer.class);
 		sessionBuilder.addAnnotatedClasses(Question.class);
+		sessionBuilder.addAnnotatedClasses(User.class);
 
 		sessionBuilder.addProperties(getHibernateProperties());
 
