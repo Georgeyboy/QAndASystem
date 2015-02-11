@@ -1,5 +1,8 @@
 package com.QAndA;
 
+import com.QAndA.Domain.Answer;
+import com.QAndA.Domain.Notification;
+import com.QAndA.Domain.Question;
 import com.QAndA.Domain.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +59,11 @@ public class Config {
 
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 
+//		Annotated classes
 		sessionBuilder.addAnnotatedClasses(User.class);
+		sessionBuilder.addAnnotatedClasses(Notification.class);
+		sessionBuilder.addAnnotatedClasses(Answer.class);
+		sessionBuilder.addAnnotatedClasses(Question.class);
 
 		sessionBuilder.addProperties(getHibernateProperties());
 
