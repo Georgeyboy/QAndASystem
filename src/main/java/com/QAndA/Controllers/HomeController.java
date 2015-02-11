@@ -38,7 +38,7 @@ public class HomeController {
 		user.setfName("George");
 		user.setlName("Harris");
 		userDao.save(user);
-		return "Test";
+		return "test";
 	}
 
 
