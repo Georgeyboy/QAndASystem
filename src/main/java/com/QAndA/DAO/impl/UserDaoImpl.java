@@ -38,13 +38,18 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional
 	public User update(User user) {
-		User updatedUser = this.get(user.getId());
-
+//		User updatedUser = this.get(user.getId());
+//		updatedUser.setfName(user.getfName());
+//		updatedUser.setlName(user.getlName());
+//		updatedUser.setAnswer;
+		return null;
 	}
 
 	@Override
 	@Transactional
 	public boolean delete(User user) {
-		return false;
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(user);//TODO Think about knock on effects for answers - possibly link to specific ' null account'?
+		return true;
 	}
 }
