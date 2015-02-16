@@ -26,9 +26,6 @@ import java.util.Properties;
 @Configuration
 public class Config {
 
-
-
-
 	/**
 	 * Server Start point
 	 * @param args

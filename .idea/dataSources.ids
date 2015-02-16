@@ -2336,6 +2336,45 @@
       <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
       <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
     </table>
+    <table name="qa_answer" schema="public" catalog="dbp3tq7i4s8pnp" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="answer" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="question_id" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="user_id" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="qa_answer_pkey" columns="id"/>
+      <foreign-key name="fk_o2ieh7urjrh6xnqnjbrtbds3s" columns="question_id" ref-table="qa_question" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_f0pd0srvbluxa4y7unlo78vnn" columns="user_id" ref-table="qa_user" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="qa_notification" schema="public" catalog="dbp3tq7i4s8pnp" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="link" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="message" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="title" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="user_id" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="qa_notification_pkey" columns="id"/>
+      <foreign-key name="fk_9tr397fxf6fwb6hvitqrwps6n" columns="user_id" ref-table="qa_user" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="qa_question" schema="public" catalog="dbp3tq7i4s8pnp" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="date" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="question" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="title" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="user_id" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="qa_question_pkey" columns="id"/>
+      <foreign-key name="fk_qj4fvv78p3vsbr1mnh5yapf2m" columns="user_id" ref-table="qa_user" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_o2ieh7urjrh6xnqnjbrtbds3s" table="qa_answer" schema="public" catalog="dbp3tq7i4s8pnp" columns="question_id"/>
+    </table>
+    <table name="qa_user" schema="public" catalog="dbp3tq7i4s8pnp" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="avatarlocation" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="fname" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="lname" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="qa_user_pkey" columns="id"/>
+      <exported-key name="fk_f0pd0srvbluxa4y7unlo78vnn" table="qa_answer" schema="public" catalog="dbp3tq7i4s8pnp" columns="user_id"/>
+      <exported-key name="fk_9tr397fxf6fwb6hvitqrwps6n" table="qa_notification" schema="public" catalog="dbp3tq7i4s8pnp" columns="user_id"/>
+      <exported-key name="fk_qj4fvv78p3vsbr1mnh5yapf2m" table="qa_question" schema="public" catalog="dbp3tq7i4s8pnp" columns="user_id"/>
+    </table>
     <procedure name="_pg_char_max_length" schema="information_schema" catalog="dbp3tq7i4s8pnp" type="2">
       <prototype>
         <parameter name="typid" sqlType="oid" precision="0" scale="0" nullable="true" jdbcType="-5" type="1" index="1"/>
