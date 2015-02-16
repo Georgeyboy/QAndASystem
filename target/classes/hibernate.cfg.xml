@@ -1,0 +1,11 @@
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</property>
+        <property name="hibernate.connection.charSet">UTF-8</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="show_sql">true</property>
+    </session-factory>
+</hibernate-configuration>
