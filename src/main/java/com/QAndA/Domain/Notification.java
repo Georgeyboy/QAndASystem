@@ -23,6 +23,8 @@ public class Notification {
 
 	private String link;
 
+	private boolean read;
+
 	public long getId() {
 		return id;
 	}
@@ -61,5 +63,13 @@ public class Notification {
 
 	public void setLink(String link) {
 		this.link = link;
+	}
+
+	public boolean isRead() {
+		return read;
+	}
+
+	public void setRead(boolean read) {
+		this.read = read;
 	}
 }

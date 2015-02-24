@@ -7,5 +7,9 @@ import com.QAndA.Domain.User;
  */
 public interface UserDao extends SuperDao<User> {
 
+	public void activateAccount(User user);
+
+	public void deactivateAccount(User user);
+
 
 }

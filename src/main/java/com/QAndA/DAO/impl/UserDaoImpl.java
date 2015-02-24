@@ -6,7 +6,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import javax.transaction.Transactional;
 
 /**
@@ -23,6 +22,7 @@ public class UserDaoImpl implements UserDao {
 	@Transactional
 	public User save(User user) {
 		Session session = sessionFactory.getCurrentSession();
+		user.setAccountActive(true);
 		long id = (Long) session.save(user); //TODO check this actually returns the id
 		user.setId(id);
 
@@ -38,18 +38,37 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional
 	public User update(User user) {
-//		User updatedUser = this.get(user.getId());
-//		updatedUser.setfName(user.getfName());
-//		updatedUser.setlName(user.getlName());
-//		updatedUser.setAnswer;
-		return null;
+		User updatedUser = this.get(user.getId());
+		updatedUser.setfName(user.getfName());
+		updatedUser.setlName(user.getlName());
+		updatedUser.setEmail(user.getEmail());
+		updatedUser.setAvatarLocation(user.getAvatarLocation());
+		this.save(updatedUser);
+		return updatedUser;
 	}
 
 	@Override
 	@Transactional
 	public boolean delete(User user) {
-		Session session = sessionFactory.getCurrentSession();
-		session.delete(user);//TODO Think about knock on effects for answers - possibly link to specific ' null account'?
-		return true;
+//		USERS DO NOT GET DELETED
+//		This is to ensure questions and answers still link to a user for reference
+//		Instead, users can deactivated. This will be displayed upon viewing their account page
+		return false;
+	}
+
+	@Override
+	@Transactional
+	public void activateAccount(User user) {
+		User u = this.get(user.getId());
+		u.setAccountActive(true);
+		this.save(u);
+	}
+
+	@Override
+	@Transactional
+	public void deactivateAccount(User user) {
+		User u = this.get(user.getId());
+		u.setAccountActive(false);
+		this.save(u);
 	}
 }

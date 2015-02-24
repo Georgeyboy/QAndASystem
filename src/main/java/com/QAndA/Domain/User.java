@@ -19,6 +19,7 @@ public class User {
 	private String lName;
 	private String email;
 	private String avatarLocation;
+	private boolean accountActive;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Notification> notifications;
@@ -92,5 +93,13 @@ public class User {
 
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
+	}
+
+	public boolean isAccountActive() {
+		return accountActive;
+	}
+
+	public void setAccountActive(boolean accountActive) {
+		this.accountActive = accountActive;
 	}
 }
