@@ -1,7 +1,11 @@
 package com.QAndA.Domain;
 
+import com.sun.istack.internal.Nullable;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by George on 10/02/2015.
@@ -17,9 +21,12 @@ public class User {
 
 	private String fName;
 	private String lName;
-	private String email;
 	private String avatarLocation;
-	private boolean accountActive;
+
+	@Column(nullable = false)
+	private String username;
+	private String password;
+	private boolean enabled;
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Notification> notifications;
@@ -29,6 +36,14 @@ public class User {
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Answer> answers;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	private Set<UserRole> userRole = new HashSet<UserRole>(0);
+
+
+//	Available User Roles
+	public static final int ROLE_USER = 1;
+	public static final int ROLE_ADMIN = 2;
 
 
 	public long getId() {
@@ -53,14 +68,6 @@ public class User {
 
 	public void setlName(String lName) {
 		this.lName = lName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getAvatarLocation() {
@@ -95,11 +102,35 @@ public class User {
 		this.answers = answers;
 	}
 
-	public boolean isAccountActive() {
-		return accountActive;
+	public boolean isEnabled() {
+		return enabled;
 	}
 
-	public void setAccountActive(boolean accountActive) {
-		this.accountActive = accountActive;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public Set<UserRole> getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(Set<UserRole> userRole) {
+		this.userRole = userRole;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

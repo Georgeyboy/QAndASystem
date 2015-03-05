@@ -1,10 +1,6 @@
 package com.QAndA;
 
-import com.QAndA.DAO.UserDao;
-import com.QAndA.Domain.Answer;
-import com.QAndA.Domain.Notification;
-import com.QAndA.Domain.Question;
-import com.QAndA.Domain.User;
+import com.QAndA.Domain.*;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.*;
@@ -12,19 +8,25 @@ import org.springframework.boot.autoconfigure.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.sql.DataSource;
-import java.net.URI;
 import java.util.Properties;
 
 
 @EnableAutoConfiguration
 @ComponentScan("com.QAndA")
 @Configuration
-public class Config {
+@EnableTransactionManagement
+//@Import({ SecurityLoginConfig.class })
+public class Config extends WebMvcConfigurerAdapter {
 
 	/**
 	 * Server Start point
@@ -75,6 +77,7 @@ public class Config {
 		sessionBuilder.addAnnotatedClasses(Answer.class);
 		sessionBuilder.addAnnotatedClasses(Question.class);
 		sessionBuilder.addAnnotatedClasses(User.class);
+		sessionBuilder.addAnnotatedClasses(UserRole.class);
 
 		sessionBuilder.addProperties(getHibernateProperties());
 
@@ -98,6 +101,11 @@ public class Config {
 
 		return transactionManager;
 	}
+
+//	@Override
+//	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+//		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+//	}
 
 
 

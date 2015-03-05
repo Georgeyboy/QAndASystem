@@ -2,16 +2,17 @@ package com.QAndA.DAO.impl;
 
 import com.QAndA.DAO.AnswerDao;
 import com.QAndA.Domain.Answer;
-import com.QAndA.Domain.Question;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 
 /**
  * Created by George on 19/02/2015.
  */
+@Repository
 public class AnswerDaoImpl implements AnswerDao{
 
 	@Autowired

@@ -5,12 +5,14 @@ import com.QAndA.Domain.Notification;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 
 /**
  * Created by George on 19/02/2015.
  */
+@Repository
 public class NotificationDaoImpl implements NotificationDao{
 
 	@Autowired

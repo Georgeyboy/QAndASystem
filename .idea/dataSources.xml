@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1414458035">
+  <component name="DataSourceManagerImpl" format="xml" hash="290459365">
     <data-source source="LOCAL" name="PostgreSQL - dbp3tq7i4s8pnp?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory@ec2-107-20-169-200.compute-1.amazonaws.com" uuid="8f14d162-a35d-41b0-ab5d-42ad030bc797">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
@@ -8,6 +8,15 @@
       <jdbc-url>jdbc:postgresql://ec2-107-20-169-200.compute-1.amazonaws.com:5432/dbp3tq7i4s8pnp?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</jdbc-url>
       <user-name>jyboybdrlpmyzg</user-name>
       <user-password>dfeedfc2dfc1dfecdff8dfd3dfefdfe0df9ddfc2dfc6dfe1dfdedff0df93df9ddf9ddf9ddfc7df92df99dfccdfd0dffbdfd2dff2</user-password>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - qalocal@localhost" uuid="c1a39625-0729-49d5-8160-05943abaa619">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/qalocal</jdbc-url>
+      <user-name>localuser</user-name>
+      <user-password>dfc6dfc5dfc9dfcbdfc6dfdfdfd9dfcfdfd8</user-password>
       <libraries />
     </data-source>
   </component>
