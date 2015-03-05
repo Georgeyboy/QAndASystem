@@ -1,6 +1,5 @@
 package com.QAndA;
 
-import com.QAndA.Services.AccountDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -38,12 +37,12 @@ public class SecurityLoginConfig extends WebSecurityConfigurerAdapter {
 		http
 				.authorizeRequests()
 
-				.antMatchers("/test", "/addTestUser", "/signUp", "/logout").permitAll()
+				.antMatchers("/", "/signUp", "/logout", "/askQuestion").permitAll()
 				.antMatchers("/css/**", "/js/**").permitAll()
 				.anyRequest().authenticated()
 			.and()
-				.formLogin().failureUrl("/test?loginerror")
-				.loginPage("/test").defaultSuccessUrl("/test")
+				.formLogin().failureUrl("/?loginerror")
+				.loginPage("/")
 				.permitAll()
 				.and()
 				.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

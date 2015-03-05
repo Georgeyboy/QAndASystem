@@ -2,9 +2,12 @@ package com.QAndA.Controllers;
 
 import com.QAndA.DAO.UserDao;
 import com.QAndA.DAO.UserRoleDao;
+import com.QAndA.DTO.QuestionDTO;
 import com.QAndA.DTO.SignUpFormDto;
+import com.QAndA.Domain.Question;
 import com.QAndA.Domain.User;
 import com.QAndA.Domain.UserRole;
+import com.QAndA.Services.QuestionService;
 import com.QAndA.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,11 +32,12 @@ public class HomeController {
 	@Autowired
 	private UserDao userDao;
 
-	@Autowired
-	private UserRoleDao userRoleDao;
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private QuestionService questionService;
 
 
 
@@ -62,58 +66,20 @@ public class HomeController {
 		}
 	}
 
+
+
 	@RequestMapping("/")
-	public String index() {
-		System.out.println("HomeController '/' hit");
-		return "index";
-	}
+	public String index(final Model model,
+					   @RequestParam(value = "loginerror", required = false) String error){
 
-	@RequestMapping("/test")
-	public String test(final Model model){
-		System.out.println("HomeController '/test' hit");
-		return "test";
-	}
+		List<String> loginerrors = new ArrayList<String>();
 
-	@RequestMapping("/addTestUser")
-	public String addTestUser(){
-		System.out.println("Adding test user");
-		User user = new User();
-		user.setfName("George");
-		user.setlName("Harris");
-		user.setPassword("g");
-		user.setUsername("g");
-		try {
-			user = userDao.save(user);
-		}catch(Exception e){
-			e.printStackTrace();
+		if(error != null){
+			loginerrors.add(error);
 		}
 
-		UserRole adminRole = new UserRole();
-		adminRole.setUser(user);
-		adminRole.setRole("ADMIN");
-		userRoleDao.save(adminRole);
-//		UserRole admin = userRoleDao.findByRole("ADMIN");
-//		UserRole userRole = userRoleDao.findByRole("USER");
-//		if(admin == null){
-//			admin = new UserRole();
-//			admin.setRole("ADMIN");
-//			admin.setUser(user);
-//			userRoleDao.save(admin);
-//			user.getUserRole().add(userRoleDao.findByRole("ADMIN"));
-//		}else{
-//			user.getUserRole().add(userRoleDao.findByRole("ADMIN"));
-//		}
-//		if(userRole == null){
-//			userRole = new UserRole();
-//			userRole.setRole("USER");
-//			userRole.setUser(user);
-//			userRoleDao.save(userRole);
-//			user.getUserRole().add(userRoleDao.findByRole("USER"));
-//		}else{
-//			user.getUserRole().add(userRoleDao.findByRole("USER"));
-//		}
-
-		return "test";
+		model.addAttribute("loginerror", loginerrors);
+		return "index";
 	}
 
 
@@ -131,7 +97,7 @@ public class HomeController {
 	 * @return redirect to home page
 	 */
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
-	public String signUpSubmit(final SignUpFormDto dto, final ModelMap model, final BindingResult bindingResult){
+	public String signUpSubmit(final SignUpFormDto dto, final ModelMap model){
 
 		System.out.println("User Form submitted!");
 		List<String> signUpSuccess = new ArrayList<String>();
@@ -184,12 +150,45 @@ public class HomeController {
 	}
 
 
-	@RequestMapping("/secure")
-	public String securePage(final Model model){
-		model.addAttribute("message", "This page is secure");
-		return "index";
+	@RequestMapping("/askQuestion")
+	public String askQuestion(final Model model, final QuestionDTO dto){
+		System.out.println("Ask question hit");
+		model.addAttribute("dto", dto);
+
+		return "askquestion";
 	}
 
+	@RequestMapping(value = "/askQuestion", method = RequestMethod.POST)
+	public String askQuestionSubmit(final Model model, final QuestionDTO dto){
+
+//		Validation
+		List<String> submitFail = new ArrayList<String>();
+		boolean submitPasssed = true;
+
+		if(dto.getTitle().length() < 1){
+			submitFail.add("Title cannot be empty. Please provide a descriptive title so that other users can help you best.");
+			submitPasssed = false;
+		}
+
+		if(dto.getQuestion().length() < 1){
+			submitFail.add("Question cannot be empty - please provide a question!");
+			submitPasssed = false;
+		}
+
+		if(submitPasssed) {
+//			Form has passed!
+			String username = this.username();
+			User user = userService.findByUsername(username);
+			Question question = questionService.saveQuestion(dto, user);
+//			TODO:Redirect to question page using /question/{questionId}
+			return "redirect:/";
+		}
+
+		model.addAttribute("submitFail", submitFail);
+		model.addAttribute("dto", dto);
+
+		return "askquestion";
+	}
 
 
 }

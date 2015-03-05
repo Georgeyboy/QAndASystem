@@ -30,7 +30,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Q And A System</a>
+            <a class="navbar-brand" th:href="@{/}">Q And A System</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 
@@ -38,7 +38,7 @@
                 <button id="signUpBtn" class="btn btn-primary" onclick="window.location.href='/signUp'">Sign Up</button>
             </div>
 
-            <form class="navbar-form navbar-right" th:if="${loggedIn == false}" th:action="@{/test}" method="post">
+            <form class="navbar-form navbar-right" th:if="${loggedIn == false}" th:action="@{/}" method="post">
                 <div>
                     <div class="form-group">
                         <input id="username" type="text" placeholder="Username" name="username" class="form-control">

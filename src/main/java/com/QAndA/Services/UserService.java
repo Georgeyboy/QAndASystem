@@ -46,4 +46,9 @@ public class UserService {
 		userRoleDao.save(role);
 		return true;
 	}
+
+
+	public User findByUsername(String username){
+		return userDao.findByUsername(username);
+	}
 }
