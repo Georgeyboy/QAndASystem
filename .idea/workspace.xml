@@ -66,8 +66,8 @@
       <file leaf-file-name="Config.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5748792" vertical-offset="306" max-vertical-offset="1683">
-              <caret line="57" column="0" selection-start-line="57" selection-start-column="2" selection-end-line="66" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.46537843" vertical-offset="306" max-vertical-offset="1683">
+              <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -1110,12 +1110,12 @@
       <workItem from="1425425386199" duration="579000" />
       <workItem from="1425426648764" duration="132000" />
       <workItem from="1425431977596" duration="347000" />
-      <workItem from="1425473561562" duration="25647000" />
+      <workItem from="1425473561562" duration="25701000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165073000" />
+    <option name="totallyTimeSpent" value="165127000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1823,8 +1823,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5748792" vertical-offset="306" max-vertical-offset="1683">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="2" selection-end-line="66" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.46537843" vertical-offset="306" max-vertical-offset="1683">
+          <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
           <folding />
         </state>
       </provider>
