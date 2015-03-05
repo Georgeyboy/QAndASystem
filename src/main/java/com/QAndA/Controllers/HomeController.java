@@ -122,7 +122,7 @@ public class HomeController {
 		model.addAttribute("dto", dto);
 
 
-		return "signUp";
+		return "signup";
 	}
 
 	/**
@@ -180,7 +180,7 @@ public class HomeController {
 		model.addAttribute("signUpFail", signUpFail);
 		model.addAttribute("dto", dto);
 
-		return "signUp";
+		return "signup";
 	}
 
 
