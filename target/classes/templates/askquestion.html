@@ -46,11 +46,11 @@
 
             <form id="questionform" name="questionform" th:action="@{/askQuestion}" th:object="${dto}" method="post">
                 <div class="form-group">
-                    <label for="title">Title</label>
+                    <label for="title">Question Title</label>
                     <input type="text" class="form-control" id="title" placeholder="Title" th:field="*{title}">
                 </div>
                 <div class="form-group">
-                    <label for="question">Last Name</label>
+                    <label for="question">More Detail</label>
                     <textarea class="form-control" rows="5" id="question" placeholder="Question" th:field="*{question}" form="questionform"></textarea>
                 </div>
 

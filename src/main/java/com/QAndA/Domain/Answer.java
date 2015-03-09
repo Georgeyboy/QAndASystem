@@ -1,6 +1,7 @@
 package com.QAndA.Domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by George on 11/02/2015.
@@ -21,6 +22,9 @@ public class Answer {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Question question;
+
+
+	private Date date;
 
 	public long getId() {
 		return id;
@@ -52,5 +56,13 @@ public class Answer {
 
 	public void setQuestion(Question question) {
 		this.question = question;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }

@@ -37,7 +37,7 @@ public class SecurityLoginConfig extends WebSecurityConfigurerAdapter {
 		http
 				.authorizeRequests()
 
-				.antMatchers("/", "/signUp", "/logout", "/askQuestion").permitAll()
+				.antMatchers("/", "/signUp", "/logout", "/askQuestion", "/question/**").permitAll()
 				.antMatchers("/css/**", "/js/**").permitAll()
 				.anyRequest().authenticated()
 			.and()
@@ -50,10 +50,6 @@ public class SecurityLoginConfig extends WebSecurityConfigurerAdapter {
 
 	}
 
-//	@Override
-//	public UserDetailsService userDetailsServiceBean() {
-//		return new AccountDetailsService();
-//	}
 
 
 	@Bean

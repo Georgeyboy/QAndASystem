@@ -2,11 +2,14 @@ package com.QAndA.Controllers;
 
 import com.QAndA.DAO.UserDao;
 import com.QAndA.DAO.UserRoleDao;
+import com.QAndA.DTO.AnswerDTO;
 import com.QAndA.DTO.QuestionDTO;
 import com.QAndA.DTO.SignUpFormDto;
+import com.QAndA.Domain.Answer;
 import com.QAndA.Domain.Question;
 import com.QAndA.Domain.User;
 import com.QAndA.Domain.UserRole;
+import com.QAndA.Services.AnswerService;
 import com.QAndA.Services.QuestionService;
 import com.QAndA.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +38,9 @@ public class HomeController {
 
 	@Autowired
 	private QuestionService questionService;
+
+	@Autowired
+	private AnswerService answerService;
 
 
 
@@ -181,13 +184,43 @@ public class HomeController {
 			User user = userService.findByUsername(username);
 			Question question = questionService.saveQuestion(dto, user);
 //			TODO:Redirect to question page using /question/{questionId}
-			return "redirect:/";
+			return "redirect:/question/" + question.getId();
 		}
 
 		model.addAttribute("submitFail", submitFail);
 		model.addAttribute("dto", dto);
 
 		return "askquestion";
+	}
+
+
+
+	@RequestMapping("/question/{questionID}")
+	public String viewQuestion(final Model model,
+							   @PathVariable String questionID){
+		System.out.println("View Question hit");
+
+		Question question = questionService.getQuestion(questionID);
+		if(question == null){
+//			TODO: Return question error page / invalid question etc
+			return "redirect:/";
+		}
+
+		model.addAttribute("questionTitle", question.getTitle());
+		model.addAttribute("questionDescription", question.getQuestion());
+		model.addAttribute("questionUser", question.getUser().getUsername());
+//		model.addAttribute("questionDate", question.getDate()); //TODO format date and use in page
+
+		List<Answer> answers = question.getAnswers();
+
+		List<AnswerDTO> answerDTOs = answerService.answersToDtos(answers, question.getId());
+
+		AnswerDTO submitAnswer = new AnswerDTO();
+
+		model.addAttribute("dto", submitAnswer);
+		model.addAttribute("answers", answerDTOs);
+
+		return "question";
 	}
 
 

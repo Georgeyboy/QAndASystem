@@ -33,4 +33,11 @@ public class QuestionService {
 
 	}
 
+
+
+	public Question getQuestion(String id){
+		Long qid = Long.parseLong(id);
+		return questionDao.get(qid);
+	}
+
 }
