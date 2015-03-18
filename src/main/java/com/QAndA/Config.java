@@ -44,28 +44,28 @@ public class Config extends WebMvcConfigurerAdapter {
 	}
 
 //	Heroku datasource
-//	@Bean(name = "dataSource")
-//	public DataSource dataSource() throws Exception {
-//		final URI dbUrl = new URI(System.getenv("DATABASE_URL"));
-//		final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//		dataSource.setDriverClassName("org.postgresql.Driver");
-//		dataSource.setUrl("jdbc:postgresql://" + dbUrl.getHost() + dbUrl.getPath());
-//		dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
-//		dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
-//		return dataSource;
-//	}
-
-	//	Local datasource
 	@Bean(name = "dataSource")
 	public DataSource dataSource() throws Exception {
-//		final URI dbUrl = new URI(System.getenv("DATABASE_URL"));
+		final URI dbUrl = new URI(System.getenv("DATABASE_URL"));
 		final DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/qalocal");
-		dataSource.setUsername("localuser");
-		dataSource.setPassword("localuser");
+		dataSource.setUrl("jdbc:postgresql://" + dbUrl.getHost() + dbUrl.getPath());
+		dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
+		dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
 		return dataSource;
 	}
+
+//	//	Local datasource
+//	@Bean(name = "dataSource")
+//	public DataSource dataSource() throws Exception {
+////		final URI dbUrl = new URI(System.getenv("DATABASE_URL"));
+//		final DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//		dataSource.setDriverClassName("org.postgresql.Driver");
+//		dataSource.setUrl("jdbc:postgresql://localhost:5432/qalocal");
+//		dataSource.setUsername("localuser");
+//		dataSource.setPassword("localuser");
+//		return dataSource;
+//	}
 
 	@Autowired
 	@Bean(name = "sessionFactory")
@@ -89,7 +89,7 @@ public class Config extends WebMvcConfigurerAdapter {
 		Properties properties = new Properties();
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-		properties.put("hibernate.hbm2ddl.auto", "update");
+		properties.put("hibernate.hbm2ddl.auto", "create");
 		return properties;
 	}
 
