@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by George on 19/02/2015.
@@ -51,4 +52,12 @@ public class QuestionDaoImpl implements QuestionDao {
 		return true;//TODO try catch in here for deletion
 	}
 
+	@Override
+	@Transactional
+	public List<Question> getRecentQuestions(int limit) {
+		Session session = sessionFactory.getCurrentSession();
+		List<Question> questions = session.createQuery("FROM Question r ORDER BY r.id desc").setMaxResults(limit).list();
+
+		return questions;
+	}
 }

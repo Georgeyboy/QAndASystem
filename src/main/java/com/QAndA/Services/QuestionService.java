@@ -7,7 +7,9 @@ import com.QAndA.Domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by George on 05/03/2015.
@@ -33,11 +35,35 @@ public class QuestionService {
 
 	}
 
+	public List<QuestionDTO> questionsToDtos(List<Question> questions){
+
+		List<QuestionDTO> results = new ArrayList<QuestionDTO>();
+		for(Question question : questions){
+			results.add(this.questionToDto(question));
+		}
+
+		return results;
+
+	}
+
+	public QuestionDTO questionToDto(Question question){
+		QuestionDTO dto = new QuestionDTO();
+		dto.setTitle(question.getTitle());
+		dto.setQuestion(question.getQuestion());
+		dto.setLink("/question/" + question.getId());
+		return dto;
+	}
+
 
 
 	public Question getQuestion(String id){
 		Long qid = Long.parseLong(id);
 		return questionDao.get(qid);
+	}
+	
+	
+	public List<QuestionDTO> getRecentQuestionsDtos(int limit){
+		return this.questionsToDtos(questionDao.getRecentQuestions(limit));
 	}
 
 }

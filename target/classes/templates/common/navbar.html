@@ -62,7 +62,7 @@
                 </div>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a th:text="${currentUser}"></a></li>
+                    <li><a th:text="${currentUser}" th:href="@{|/user/${currentUser}|}"></a></li>
                 </ul>
 
             </div>

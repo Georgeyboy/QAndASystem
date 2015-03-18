@@ -2,6 +2,7 @@ package com.QAndA.Controllers;
 
 import com.QAndA.DAO.UserDao;
 import com.QAndA.DAO.UserRoleDao;
+import com.QAndA.DTO.AccountDto;
 import com.QAndA.DTO.AnswerDTO;
 import com.QAndA.DTO.QuestionDTO;
 import com.QAndA.DTO.SignUpFormDto;
@@ -9,6 +10,7 @@ import com.QAndA.Domain.Answer;
 import com.QAndA.Domain.Question;
 import com.QAndA.Domain.User;
 import com.QAndA.Domain.UserRole;
+import com.QAndA.Services.AccountService;
 import com.QAndA.Services.AnswerService;
 import com.QAndA.Services.QuestionService;
 import com.QAndA.Services.UserService;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
 * Created by George on 10/02/2015.
@@ -41,6 +44,9 @@ public class HomeController {
 
 	@Autowired
 	private AnswerService answerService;
+
+	@Autowired
+	private AccountService accountService;
 
 
 
@@ -183,7 +189,6 @@ public class HomeController {
 			String username = this.username();
 			User user = userService.findByUsername(username);
 			Question question = questionService.saveQuestion(dto, user);
-//			TODO:Redirect to question page using /question/{questionId}
 			return "redirect:/question/" + question.getId();
 		}
 
@@ -195,7 +200,7 @@ public class HomeController {
 
 
 
-	@RequestMapping("/question/{questionID}")
+	@RequestMapping(value = "/question/{questionID}", method = RequestMethod.GET)
 	public String viewQuestion(final Model model,
 							   @PathVariable String questionID){
 		System.out.println("View Question hit");
@@ -212,15 +217,57 @@ public class HomeController {
 //		model.addAttribute("questionDate", question.getDate()); //TODO format date and use in page
 
 		List<Answer> answers = question.getAnswers();
+		Set<AnswerDTO> answerDTOs = answerService.answersToDtos(answers, question.getId());
 
-		List<AnswerDTO> answerDTOs = answerService.answersToDtos(answers, question.getId());
 
 		AnswerDTO submitAnswer = new AnswerDTO();
+		submitAnswer.setQuestionID(questionID);
 
 		model.addAttribute("dto", submitAnswer);
 		model.addAttribute("answers", answerDTOs);
 
 		return "question";
+	}
+
+
+	@RequestMapping(value = "/postAnswer", method = RequestMethod.POST)
+	public String postAnswer(final Model model, final AnswerDTO dto){
+		System.out.println("user: " + dto.getUserID());
+
+		Answer answer = answerService.saveAnswer(dto, userService.findByUsername(username()), questionService.getQuestion(dto.getQuestionID()));
+
+		return "redirect:/question/" + dto.getQuestionID();
+	}
+
+
+	//TODO validate user signup form to ensure username etc doesnt have special characters
+	@RequestMapping(value = "/user/{username}", method= RequestMethod.GET)
+	public String viewUser(final Model model, @PathVariable String username){
+
+		AccountDto dto;
+
+		User user = userDao.findByUsername(username);
+		if(user == null){
+//			TODO cannot find user page
+			return "redirect:/";
+		}
+
+		dto = accountService.getAccountDto(user);
+
+		model.addAttribute("dto", dto);
+
+		return "account";
+	}
+
+
+
+	@RequestMapping(value = "/recentQuestions", method = RequestMethod.GET)
+	public String viewTopQuestions(final Model model){
+
+		model.addAttribute("questions", questionService.getRecentQuestionsDtos(10));
+
+		return "recentQuestions";
+
 	}
 
 

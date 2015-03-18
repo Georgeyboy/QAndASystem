@@ -1,5 +1,8 @@
 package com.QAndA.Domain;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +26,7 @@ public class Question {
 	//private String keywords;//TODO should search be based off of this or title?
 
 	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
 	private List<Answer> answers;
 
 	private Date date;
