@@ -26,17 +26,17 @@
       <file leaf-file-name="HomeController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Controllers/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2914" max-vertical-offset="4590">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1282" max-vertical-offset="4590">
               <caret line="220" column="26" selection-start-line="220" selection-start-column="26" selection-end-line="220" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="question.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="question.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/question.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34731933" vertical-offset="892" max-vertical-offset="3791">
+            <state vertical-scroll-proportion="-11.461538" vertical-offset="892" max-vertical-offset="3791">
               <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
               <folding />
             </state>
@@ -93,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Config.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Config.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1768" max-vertical-offset="1904">
-              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6744186" vertical-offset="204" max-vertical-offset="1649">
+              <caret line="57" column="62" selection-start-line="57" selection-start-column="62" selection-end-line="58" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -170,10 +170,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/Domain/Comment.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/DTO/CommentDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/Services/CommentService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/QAndA/Config.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/Controllers/HomeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/Services/AnswerService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/question.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/QAndA/Config.java" />
       </list>
     </option>
   </component>
@@ -1183,12 +1183,12 @@
       <workItem from="1426688263921" duration="15164000" />
       <workItem from="1426723361268" duration="3477000" />
       <workItem from="1426776535261" duration="9832000" />
-      <workItem from="1426809180591" duration="497000" />
+      <workItem from="1426809180591" duration="683000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="256119000" />
+    <option name="totallyTimeSpent" value="256305000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1220,7 +1220,7 @@
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20522387" sideWeight="0.5007452" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17965367" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17945945" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18603411" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1612,14 +1612,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="1649">
-          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/common/navbar.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="505" max-vertical-offset="1343">
@@ -1644,6 +1636,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.461538" vertical-offset="892" max-vertical-offset="3791">
+          <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Controllers/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2914" max-vertical-offset="4590">
@@ -1652,10 +1652,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/question.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34731933" vertical-offset="892" max-vertical-offset="3791">
-          <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.6744186" vertical-offset="204" max-vertical-offset="1649">
+          <caret line="57" column="62" selection-start-line="57" selection-start-column="62" selection-end-line="58" selection-end-column="61" />
           <folding />
         </state>
       </provider>
