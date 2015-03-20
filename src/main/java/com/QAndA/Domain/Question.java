@@ -12,7 +12,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "qa_question")
-public class Question {
+public class Question{
 
 	@Id
 	@GeneratedValue
@@ -23,7 +23,9 @@ public class Question {
 
 	private String title;
 	private String question;
-	//private String keywords;//TODO should search be based off of this or title?
+
+	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+	private List<Comment> comments;
 
 	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
@@ -77,5 +79,13 @@ public class Question {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 }

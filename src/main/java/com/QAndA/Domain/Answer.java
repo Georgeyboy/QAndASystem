@@ -2,6 +2,7 @@ package com.QAndA.Domain;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by George on 11/02/2015.
@@ -9,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "qa_answer")
-public class Answer {
+public class Answer{
 
 	@Id
 	@GeneratedValue
@@ -23,6 +24,8 @@ public class Answer {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Question question;
 
+	@OneToMany(mappedBy = "answer", fetch = FetchType.EAGER)
+	private List<Comment> comments;
 
 	private Date date;
 
@@ -65,4 +68,14 @@ public class Answer {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+
 }

@@ -1,25 +1,16 @@
 package com.QAndA.Controllers;
 
 import com.QAndA.DAO.UserDao;
-import com.QAndA.DAO.UserRoleDao;
-import com.QAndA.DTO.AccountDto;
-import com.QAndA.DTO.AnswerDTO;
-import com.QAndA.DTO.QuestionDTO;
-import com.QAndA.DTO.SignUpFormDto;
+import com.QAndA.DTO.*;
 import com.QAndA.Domain.Answer;
 import com.QAndA.Domain.Question;
 import com.QAndA.Domain.User;
-import com.QAndA.Domain.UserRole;
-import com.QAndA.Services.AccountService;
-import com.QAndA.Services.AnswerService;
-import com.QAndA.Services.QuestionService;
-import com.QAndA.Services.UserService;
+import com.QAndA.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -35,7 +26,6 @@ public class HomeController {
 	@Autowired
 	private UserDao userDao;
 
-
 	@Autowired
 	private UserService userService;
 
@@ -47,6 +37,9 @@ public class HomeController {
 
 	@Autowired
 	private AccountService accountService;
+
+	@Autowired
+	private CommentService commentService;
 
 
 
@@ -211,28 +204,42 @@ public class HomeController {
 			return "redirect:/";
 		}
 
-		model.addAttribute("questionTitle", question.getTitle());
-		model.addAttribute("questionDescription", question.getQuestion());
-		model.addAttribute("questionUser", question.getUser().getUsername());
+		QuestionDTO questionDto = questionService.questionToDto(question);
+		model.addAttribute("question", questionDto);
 //		model.addAttribute("questionDate", question.getDate()); //TODO format date and use in page
 
 		List<Answer> answers = question.getAnswers();
-		Set<AnswerDTO> answerDTOs = answerService.answersToDtos(answers, question.getId());
-
+		List<AnswerDTO> answerDTOs = answerService.answersToDtos(answers, question.getId());
 
 		AnswerDTO submitAnswer = new AnswerDTO();
 		submitAnswer.setQuestionID(questionID);
 
 		model.addAttribute("dto", submitAnswer);
 		model.addAttribute("answers", answerDTOs);
+		model.addAttribute("commentDto", new CommentDTO());
 
 		return "question";
+	}
+
+	@RequestMapping(value = "/postComment", method= RequestMethod.POST)
+	public String postComment(final Model model, @RequestParam("targetId") String targetId,
+							  @RequestParam("commentText") String comment,
+							  @RequestParam("commentUsername") String username,
+							  @RequestParam("questionId") String questionId){
+		CommentDTO dto = new CommentDTO();
+		dto.setComment(comment);
+		dto.setUser(username);
+		dto.setTargetId(targetId);
+
+		commentService.saveComment(dto);
+
+		return "redirect:/question/" + questionId;
 	}
 
 
 	@RequestMapping(value = "/postAnswer", method = RequestMethod.POST)
 	public String postAnswer(final Model model, final AnswerDTO dto){
-		System.out.println("user: " + dto.getUserID());
+		System.out.println("user: " + dto.getUsername());
 
 		Answer answer = answerService.saveAnswer(dto, userService.findByUsername(username()), questionService.getQuestion(dto.getQuestionID()));
 
@@ -258,8 +265,6 @@ public class HomeController {
 
 		return "account";
 	}
-
-
 
 	@RequestMapping(value = "/recentQuestions", method = RequestMethod.GET)
 	public String viewTopQuestions(final Model model){

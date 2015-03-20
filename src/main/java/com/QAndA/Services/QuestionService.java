@@ -20,6 +20,9 @@ public class QuestionService {
 	@Autowired
 	private QuestionDao questionDao;
 
+	@Autowired
+	private CommentService commentService;
+
 
 	public Question saveQuestion(QuestionDTO dto, User user){
 		Question question = new Question();
@@ -48,9 +51,12 @@ public class QuestionService {
 
 	public QuestionDTO questionToDto(Question question){
 		QuestionDTO dto = new QuestionDTO();
+		dto.setId(String.valueOf(question.getId()));
 		dto.setTitle(question.getTitle());
 		dto.setQuestion(question.getQuestion());
+		dto.setUsername(question.getUser().getUsername());
 		dto.setLink("/question/" + question.getId());
+		dto.setComments(commentService.commentsToDto(question.getComments()));
 		return dto;
 	}
 

@@ -1,15 +1,21 @@
 package com.QAndA.DTO;
 
+import java.util.List;
+
 /**
  * Created by George on 05/03/2015.
  */
 public class AnswerDTO {
 
+	private String id;
+
 	private String description;
 
 	private String questionID;
 
-	private String userID;
+	private String username;
+
+	private List<CommentDTO> comments;
 
 	public String getDescription() {
 		return description;
@@ -28,11 +34,35 @@ public class AnswerDTO {
 	}
 
 
-	public String getUserID() {
-		return userID;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserID(String userID) {
-		this.userID = userID;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getAnswerID() {
+		return id;
+	}
+
+	public void setAnswerID(String answerID) {
+		this.id = answerID;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public List<CommentDTO> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<CommentDTO> comments) {
+		this.comments = comments;
 	}
 }

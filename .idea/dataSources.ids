@@ -21283,11 +21283,25 @@
     <table name="qa_answer" schema="public" catalog="qalocal" type="TABLE">
       <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="answer" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
       <column name="question_id" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="user_id" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <primary-key name="qa_answer_pkey" columns="id"/>
       <foreign-key name="fk_o2ieh7urjrh6xnqnjbrtbds3s" columns="question_id" ref-table="qa_question" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_f0pd0srvbluxa4y7unlo78vnn" columns="user_id" ref-table="qa_user" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_g74g5cv1u6kbf9l4fh53lkfg6" table="qa_comment" schema="public" catalog="qalocal" columns="answer_id"/>
+    </table>
+    <table name="qa_comment" schema="public" catalog="qalocal" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="comment" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="targetid" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="username" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="answer_id" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="question_id" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="qa_comment_pkey" columns="id"/>
+      <foreign-key name="fk_g74g5cv1u6kbf9l4fh53lkfg6" columns="answer_id" ref-table="qa_answer" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_hg3ce8bpvk4oy3ss8p5bkinij" columns="question_id" ref-table="qa_question" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="qa_notification" schema="public" catalog="qalocal" type="TABLE">
       <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
@@ -21308,6 +21322,7 @@
       <primary-key name="qa_question_pkey" columns="id"/>
       <foreign-key name="fk_qj4fvv78p3vsbr1mnh5yapf2m" columns="user_id" ref-table="qa_user" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_o2ieh7urjrh6xnqnjbrtbds3s" table="qa_answer" schema="public" catalog="qalocal" columns="question_id"/>
+      <exported-key name="fk_hg3ce8bpvk4oy3ss8p5bkinij" table="qa_comment" schema="public" catalog="qalocal" columns="question_id"/>
     </table>
     <table name="qa_user" schema="public" catalog="qalocal" type="TABLE">
       <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>

@@ -1,6 +1,7 @@
 package com.QAndA.DTO;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by George on 05/03/2015.
@@ -9,9 +10,12 @@ import java.util.Date;
 
 public class QuestionDTO {
 
+	private String id;
 	private String title;
 	private String question;
 	private String link;
+	private String username;
+	private List<CommentDTO> comments;
 
 
 	public String getTitle() {
@@ -36,5 +40,29 @@ public class QuestionDTO {
 
 	public void setLink(String link) {
 		this.link = link;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public List<CommentDTO> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<CommentDTO> comments) {
+		this.comments = comments;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

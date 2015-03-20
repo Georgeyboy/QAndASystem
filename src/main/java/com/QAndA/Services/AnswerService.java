@@ -20,6 +20,9 @@ public class AnswerService {
 	@Autowired
 	private AnswerDao answerDao;
 
+	@Autowired
+	private CommentService commentService;
+
 
 	public Answer saveAnswer(AnswerDTO dto, User user, Question question){
 
@@ -34,17 +37,29 @@ public class AnswerService {
 	}
 
 
-	public Set<AnswerDTO> answersToDtos(List<Answer> answers, long questionID){
-		Set<AnswerDTO> results = new HashSet<AnswerDTO>();
+	public List<AnswerDTO> answersToDtos(List<Answer> answers, long questionID){
+		List<AnswerDTO> results = new ArrayList<AnswerDTO>();
 
 		for(Answer answer : answers){
-			AnswerDTO result = new AnswerDTO();
-			result.setDescription(answer.getAnswer());
-			result.setQuestionID(String.valueOf(questionID));
-			result.setUserID(answer.getUser().getUsername());
-			results.add(result);
+			results.add(this.answerToDto(answer, questionID));
 		}
 
 		return results;
 	}
+
+	public AnswerDTO answerToDto(Answer answer, long questionID){
+		AnswerDTO result = new AnswerDTO();
+		result.setId(String.valueOf(answer.getId()));
+		result.setDescription(answer.getAnswer());
+		result.setQuestionID(String.valueOf(questionID));
+		result.setUsername(answer.getUser().getUsername());
+		result.setComments(commentService.commentsToDto(answer.getComments()));
+		return result;
+	}
+
+	public Answer getAnswer(String id){
+		Long aid = Long.parseLong(id);
+		return answerDao.get(aid);
+	}
+
 }

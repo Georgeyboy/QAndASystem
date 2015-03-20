@@ -36,6 +36,9 @@ public class User {
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	private List<Answer> answers;
 
+//	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+//	private List<Comment> comments;
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	private Set<UserRole> userRole = new HashSet<UserRole>(0);
 
@@ -132,4 +135,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
 }

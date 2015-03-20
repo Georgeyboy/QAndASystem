@@ -8,6 +8,8 @@
 
     <!-- Bootstrap -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/js/bootstrap.js}" rel="javascript">
+    <link th:href="@{/js/jquery.js}" rel="javascript">
 
 
 
@@ -41,11 +43,61 @@
             <!-- Question -->
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title" th:text="${questionTitle}"></h3>
+                    <h3 class="panel-title" th:text="${question.title}"></h3>
                 </div>
-                <div class="panel-body" th:text="${questionDescription}"></div>
-                <div class="panel-footer" th:text="${questionUser}" style="font-weight: bold"></div>
+                <div class="panel-body" th:text="${question.question}"></div>
+                <div class="panel-footer" th:text="${question.username}" style="font-weight: bold; text-align: right"></div>
             </div>
+
+            <!-- Question Comments -->
+            <div th:if="!${question.comments.isEmpty()}">
+                <div th:each="comment : ${question.comments}">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-8">
+                            <p th:text="${comment.comment}"></p>
+                        </div>
+                        <div class="col-md-3">
+                            <a th:text="${comment.user}" th:href="@{|/user/${comment.user}|}" style="text-align: right"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Add New Comment-->
+            <div th:if="${loggedIn == true}" >
+                <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-8">
+                        <div class="collapse" id="newComment">
+                            <div class="well">
+                                <!--<div th:if="${loggedIn == true}">-->
+                                <form id="commentForm" name="commentForm" th:action="@{/postComment}" method="post">
+                                    <div class= "form-group">
+                                        <textarea class="form-control" rows="2" id="commentText" name="commentText" placeholder="Comment" form="commentForm"></textarea>
+                                    </div>
+
+                                    <input type="hidden" id="targetId" name="targetId" th:value="${question.id}" form="commentForm"/>
+                                    <!--<input type="hidden" id="id" name="id" form="commentForm"/>-->
+                                    <input type="hidden" id="commentUsername" name="commentUsername" th:value="${currentUser}" form="commentForm"/>
+                                    <input type="hidden" name="questionId" th:value="${question.id}" form="commentForm"/>
+                                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                    <button type="submit" class="btn btn-default" style="text-align: right"  form="commentForm">Post</button>
+                                </form>
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#newComment" aria-expanded="false" aria-controls="newComment" style="float: right">
+                        Add a comment
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <br />
             <br />
 
             <!-- Answers -->
@@ -53,13 +105,69 @@
                 <div th:each="answer : ${answers}">
                     <div class="panel panel-primary">
                         <div class="panel-body" th:text="${answer.description}"></div>
-                        <div class="panel-footer" th:text="${answer.userID}" style="font-weight: bold"></div>
+                        <div class="panel-footer" th:text="${answer.username}" style="font-weight: bold; text-align: right"></div>
+
+
                     </div>
-                    <br />
+
+
+                    <!-- Answer Comments -->
+                    <div th:if="!${answer.comments.isEmpty()}">
+                        <div th:each="comment : ${answer.comments}">
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-8">
+                                    <p th:text="${comment.comment}"></p>
+                                </div>
+                                <div class="col-md-3">
+                                    <a th:text="${comment.user}" th:href="@{|/user/${comment.user}|}" style="text-align: right"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add New Answer Comment-->
+                    <div th:if="${loggedIn == true}" >
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-8">
+                                <div class="collapse" th:id="|commentForm${answer.id}|">
+                                    <div class="well">
+                                        <!--<div th:if="${loggedIn == true}">-->
+                                        <form th:id="|answerCommentForm${answer.id}|" th:name="|answerCommentForm${answer.id}|" th:action="@{/postComment}" method="post">
+                                            <div class= "form-group">
+                                                <textarea class="form-control" rows="2"  name="commentText" placeholder="Comment" th:form="|answerCommentForm${answer.id}|"></textarea>
+                                            </div>
+
+                                            <input type="hidden" th:name="targetId" th:value="${answer.id}" th:form="|answerCommentForm${answer.id}|"/>
+                                            <!--<input type="hidden" id="id" name="id" form="commentForm"/>-->
+                                            <input type="hidden" name="commentUsername" th:value="${currentUser}" th:form="|answerCommentForm${answer.id}|"/>
+                                            <input type="hidden" name="questionId" th:value="${question.id}" th:form="|answerCommentForm${answer.id}|"/>
+                                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                                            <button type="submit" class="btn btn-default"  th:form="|answerCommentForm${answer.id}|">Post</button>
+                                        </form>
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" th:attr="data-target='#commentForm'+${answer.id}"  aria-expanded="false" aria-controls="newComment" style="float: right">
+                                    Add a comment
+                                </button>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                        </div>
+                    </div>
                 </div>
             </div>
 
+
             <div class="panel panel-primary" th:if="${answers.isEmpty()}">
+
                 <div class="panel-body">
                     <p>There are no answers for this question currently. Why not submit one?</p>
                 </div>
@@ -78,7 +186,7 @@
                     </div>
 
                     <input type="hidden" id="questionID" th:field="*{questionID}"/>
-                    <input type="hidden" id="userID" th:field="*{userID}"/>
+                    <input type="hidden" id="username" th:field="*{username}"/>
                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
@@ -102,7 +210,7 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
 </body>
 
