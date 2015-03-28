@@ -10,4 +10,9 @@ import java.util.List;
 public interface QuestionDao extends SuperDao<Question> {
 
 	public List<Question> getRecentQuestions(int limit);
+
+	public List<Question> searchQuestions(String query, Integer startLimit, Integer endLimit);
+
+	public long getSearchCount(String query);
+
 }

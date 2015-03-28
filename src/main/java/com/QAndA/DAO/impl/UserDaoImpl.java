@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao {
 		user.setPassword(encoder.encode(tempPass));
 		tempPass = "";
 
-		long id = (Long) session.save(user); //TODO check this actually returns the id
+		long id = (Long) session.save(user);
 		user.setId(id);
 
 		return user;
@@ -54,16 +54,8 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional
 	public User update(User user) {
-		User updatedUser = this.get(user.getId());
-		System.out.println("updatedUser = " + updatedUser	 + " and id = " + user.getId());
-//		updatedUser.setfName(user.getfName());
-//		updatedUser.setlName(user.getlName());
-//		updatedUser.setAvatarLocation(user.getAvatarLocation());
-//		updatedUser.setUsername(user.getUsername());
-//		updatedUser.setPassword(user.getPassword());
-//		updatedUser.setEnabled(user.isEnabled());
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
-		return user;
+		return this.get(user.getId());
 	}
 
 	@Override

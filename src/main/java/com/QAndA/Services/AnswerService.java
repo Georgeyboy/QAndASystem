@@ -8,6 +8,8 @@ import com.QAndA.Domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -53,6 +55,8 @@ public class AnswerService {
 		result.setDescription(answer.getAnswer());
 		result.setQuestionID(String.valueOf(questionID));
 		result.setUsername(answer.getUser().getUsername());
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy HH:mm");
+		result.setDate(dateFormat.format(answer.getDate()));
 		result.setComments(commentService.commentsToDto(answer.getComments()));
 		return result;
 	}

@@ -9,6 +9,7 @@ public class CommentDTO {
 	private String id;
 	private String user;
 	private String comment;
+	private String date;
 
 
 	public String getTargetId() {
@@ -41,5 +42,13 @@ public class CommentDTO {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 }

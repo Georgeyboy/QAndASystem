@@ -22,7 +22,7 @@ public class NotificationDaoImpl implements NotificationDao{
 	@Transactional
 	public Notification save(Notification notification) {
 		Session session = sessionFactory.getCurrentSession();
-		long id = (Long) session.save(notification); //TODO check this actually returns the id
+		long id = (Long) session.save(notification);
 		notification.setId(id);
 
 		return notification;
@@ -37,13 +37,8 @@ public class NotificationDaoImpl implements NotificationDao{
 	@Override
 	@Transactional
 	public Notification update(Notification notification) {
-		Notification updatedNotification = this.get(notification.getId());
-		updatedNotification.setUser(notification.getUser());
-		updatedNotification.setLink(notification.getLink());
-		updatedNotification.setMessage(notification.getLink());
-		updatedNotification.setRead(notification.isRead());
-		updatedNotification.setTitle(notification.getTitle());
-		return null;
+		sessionFactory.getCurrentSession().saveOrUpdate(notification);
+		return this.get(notification.getId());
 	}
 
 	@Override

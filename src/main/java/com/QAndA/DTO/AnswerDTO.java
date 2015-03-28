@@ -8,14 +8,12 @@ import java.util.List;
 public class AnswerDTO {
 
 	private String id;
-
 	private String description;
-
 	private String questionID;
-
 	private String username;
-
 	private List<CommentDTO> comments;
+	private String date;
+
 
 	public String getDescription() {
 		return description;
@@ -64,5 +62,13 @@ public class AnswerDTO {
 
 	public void setComments(List<CommentDTO> comments) {
 		this.comments = comments;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 }

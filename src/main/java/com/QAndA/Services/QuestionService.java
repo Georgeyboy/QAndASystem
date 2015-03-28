@@ -2,11 +2,15 @@ package com.QAndA.Services;
 
 import com.QAndA.DAO.QuestionDao;
 import com.QAndA.DTO.QuestionDTO;
+import com.QAndA.DTO.SearchPacketDto;
+import com.QAndA.Domain.Comment;
 import com.QAndA.Domain.Question;
 import com.QAndA.Domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -56,9 +60,14 @@ public class QuestionService {
 		dto.setQuestion(question.getQuestion());
 		dto.setUsername(question.getUser().getUsername());
 		dto.setLink("/question/" + question.getId());
-		dto.setComments(commentService.commentsToDto(question.getComments()));
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy HH:mm");
+		dto.setDate(dateFormat.format(question.getDate()));
+		List<Comment> comments = new ArrayList<Comment>();
+		comments.addAll(question.getComments());
+		dto.setComments(commentService.commentsToDto(comments));
 		return dto;
 	}
+
 
 
 
@@ -71,5 +80,7 @@ public class QuestionService {
 	public List<QuestionDTO> getRecentQuestionsDtos(int limit){
 		return this.questionsToDtos(questionDao.getRecentQuestions(limit));
 	}
+
+
 
 }

@@ -4,6 +4,7 @@ import com.QAndA.DAO.UserDao;
 import com.QAndA.DTO.*;
 import com.QAndA.Domain.Answer;
 import com.QAndA.Domain.Question;
+import com.QAndA.Domain.SearchPacket;
 import com.QAndA.Domain.User;
 import com.QAndA.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -21,7 +25,8 @@ import java.util.Set;
 * Created by George on 10/02/2015.
 */
 @Controller
-public class HomeController {
+//@RequestMapping("/basic")
+public class BasicController {
 
 	@Autowired
 	private UserDao userDao;
@@ -41,11 +46,20 @@ public class HomeController {
 	@Autowired
 	private CommentService commentService;
 
+	@Autowired
+	private SearchService searchService;
+
+	private SearchPacketDto layoverPacket;
+
 
 
 	@ModelAttribute("loggedIn")
 	public boolean loggedIn(){
+		System.out.println(SecurityContextHolder.getContext().toString());
+		System.out.println(SecurityContextHolder.getContext().getAuthentication().toString());
+		System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
 		Object user = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println("!! USER : " + user.toString());
 		if(user instanceof String){
 //			No logged in user
 			return false;
@@ -57,7 +71,11 @@ public class HomeController {
 
 	@ModelAttribute("currentUser")
 	public String username(){
+		System.out.println(SecurityContextHolder.getContext().toString());
+		System.out.println(SecurityContextHolder.getContext().getAuthentication().toString());
+		System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
 		Object user = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println("!! USER : " + user.toString());
 		if(user instanceof String){
 //			No logged in user
 			return "NO USER";
@@ -66,6 +84,11 @@ public class HomeController {
 			System.out.println("username = " + u.getUsername());
 			return u.getUsername();
 		}
+	}
+
+	@ModelAttribute("blankSearchPacket")
+	public SearchPacketDto getBlankSearchPacket(){
+		return new SearchPacketDto();
 	}
 
 
@@ -164,6 +187,7 @@ public class HomeController {
 	public String askQuestionSubmit(final Model model, final QuestionDTO dto){
 
 //		Validation
+		System.out.println("Question: " + dto.getQuestion());
 		List<String> submitFail = new ArrayList<String>();
 		boolean submitPasssed = true;
 
@@ -195,20 +219,24 @@ public class HomeController {
 
 	@RequestMapping(value = "/question/{questionID}", method = RequestMethod.GET)
 	public String viewQuestion(final Model model,
-							   @PathVariable String questionID){
+							   @PathVariable String questionID,
+							   final RedirectAttributes redirectAttributes){
 		System.out.println("View Question hit");
 
 		Question question = questionService.getQuestion(questionID);
 		if(question == null){
-//			TODO: Return question error page / invalid question etc
-			return "redirect:/";
+			String[] errors = {"Question not found. It may have been removed"};
+			model.addAttribute("errors", errors);
+			return "error";
 		}
 
 		QuestionDTO questionDto = questionService.questionToDto(question);
 		model.addAttribute("question", questionDto);
-//		model.addAttribute("questionDate", question.getDate()); //TODO format date and use in page
 
-		List<Answer> answers = question.getAnswers();
+
+
+		List<Answer> answers = new ArrayList<Answer>();
+		answers.addAll(question.getAnswers());
 		List<AnswerDTO> answerDTOs = answerService.answersToDtos(answers, question.getId());
 
 		AnswerDTO submitAnswer = new AnswerDTO();
@@ -255,8 +283,9 @@ public class HomeController {
 
 		User user = userDao.findByUsername(username);
 		if(user == null){
-//			TODO cannot find user page
-			return "redirect:/";
+			String[] errors = {"User not found. If you followed a link, the user may have been removed / deleted. If not, try checking the spelling of the username and try again."};
+			model.addAttribute("errors", errors);
+			return "error";
 		}
 
 		dto = accountService.getAccountDto(user);
@@ -272,8 +301,43 @@ public class HomeController {
 		model.addAttribute("questions", questionService.getRecentQuestionsDtos(10));
 
 		return "recentQuestions";
-
 	}
 
+//	/**
+//	 * Custom Error page
+//	 * To use this efficiently, make sure to add model attributes to a 'redirectAttributes' model and then redirect to '/error'
+//	 * @return
+//	 */
+//	@RequestMapping(value = "/error", method = RequestMethod.GET)
+//	public String error(){
+//		return "error";
+//	}
+
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public String initialSearch(final Model model, @RequestParam("query") String query){
+		System.out.println("/search hit!");
+
+		SearchPacketDto resultPacket = searchService.searchPacketToDto(searchService.initialSearch(query));
+
+		layoverPacket = resultPacket;
+
+		return "redirect:/searchResults/1";
+	}
+
+	@RequestMapping(value = "/searchResults/{pageNumber}", method = RequestMethod.GET)
+	public String getSearchPage(final Model model, @PathVariable String pageNumber){
+		System.out.println("/searchResults/" + pageNumber + " hit!");
+		SearchPacketDto searchPacket = new SearchPacketDto();
+		searchPacket.setQuery(layoverPacket.getQuery());
+		searchPacket.setPageNumber(pageNumber);
+		searchPacket.setMaxPages(layoverPacket.getMaxPages());
+		searchPacket.setResultsPerPage(layoverPacket.getResultsPerPage());
+		searchPacket.setResults(questionService.questionsToDtos(searchService.getSearchResultsPage(searchService.dtoToSearchPacket(searchPacket))));
+		System.out.println("Search found " + searchPacket.getResults().size() + " results");
+		model.addAttribute("searchPacket", searchPacket);
+
+
+		return "searchResults";
+	}
 
 }

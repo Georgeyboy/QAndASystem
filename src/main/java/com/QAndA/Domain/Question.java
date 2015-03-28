@@ -2,14 +2,15 @@ package com.QAndA.Domain;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.IndexColumn;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by George on 11/02/2015.
  */
+
 @Entity
 @Table(name = "qa_question")
 public class Question{
@@ -19,17 +20,19 @@ public class Question{
 	private long id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SELECT)
 	private User user;
 
 	private String title;
 	private String question;
 
 	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
-	private List<Comment> comments;
+	@Fetch(FetchMode.SELECT)
+	private Set<Comment> comments = new LinkedHashSet<Comment>();
 
 	@OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SELECT)
-	private List<Answer> answers;
+	private Set<Answer> answers = new LinkedHashSet<Answer>();
 
 	private Date date;
 
@@ -65,11 +68,19 @@ public class Question{
 		this.question = question;
 	}
 
-	public List<Answer> getAnswers() {
+	public Set<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public Set<Answer> getAnswers() {
 		return answers;
 	}
 
-	public void setAnswers(List<Answer> answers) {
+	public void setAnswers(Set<Answer> answers) {
 		this.answers = answers;
 	}
 
@@ -79,13 +90,5 @@ public class Question{
 
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
 	}
 }

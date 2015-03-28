@@ -22,7 +22,7 @@ public class AnswerDaoImpl implements AnswerDao{
 	@Transactional
 	public Answer save(Answer answer) {
 		Session session = sessionFactory.getCurrentSession();
-		long id = (Long) session.save(answer); //TODO check this actually returns the id
+		long id = (Long) session.save(answer);
 		answer.setId(id);
 
 		return answer;
@@ -37,13 +37,8 @@ public class AnswerDaoImpl implements AnswerDao{
 	@Override
 	@Transactional
 	public Answer update(Answer answer) {
-		Answer updatedAnswer = this.get(answer.getId());
-		updatedAnswer.setAnswer(answer.getAnswer());
-		updatedAnswer.setQuestion(answer.getQuestion());
-		updatedAnswer.setUser(answer.getUser());
-		this.save(updatedAnswer);
-//		TODO check if this also updates the appropriate question
-		return updatedAnswer;
+		sessionFactory.getCurrentSession().saveOrUpdate(answer);
+		return this.get(answer.getId());
 	}
 
 	@Override

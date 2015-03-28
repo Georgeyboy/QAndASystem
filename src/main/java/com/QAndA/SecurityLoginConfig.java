@@ -37,7 +37,7 @@ public class SecurityLoginConfig extends WebSecurityConfigurerAdapter {
 		http
 				.authorizeRequests()
 
-				.antMatchers("/", "/signUp", "/logout", "/askQuestion", "/question/**", "/user/**", "/recentQuestions").permitAll()
+				.antMatchers("/**", "/basic/**").permitAll()
 				.antMatchers("/css/**", "/js/**", "/avatars/**").permitAll()
 				.anyRequest().authenticated()
 			.and()

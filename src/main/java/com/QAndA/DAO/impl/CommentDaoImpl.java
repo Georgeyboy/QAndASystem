@@ -22,7 +22,7 @@ public class CommentDaoImpl implements CommentDao{
 	@Transactional
 	public Comment save(Comment comment) {
 		Session session = sessionFactory.getCurrentSession();
-		long id = (Long) session.save(comment); //TODO check this actually returns the id
+		long id = (Long) session.save(comment);
 		comment.setId(id);
 
 		return comment;
@@ -37,7 +37,7 @@ public class CommentDaoImpl implements CommentDao{
 	@Override
 	@Transactional
 	public Comment update(Comment comment) {
-		sessionFactory.getCurrentSession().saveOrUpdate(comment); //TODO update all other DAOs .update() to .saveOrUpdate();
+		sessionFactory.getCurrentSession().saveOrUpdate(comment);
 		return this.get(comment.getId());
 	}
 
@@ -46,7 +46,7 @@ public class CommentDaoImpl implements CommentDao{
 	public boolean delete(Comment comment) {
 		Session session = sessionFactory.getCurrentSession();
 		session.delete(comment);
-		return true;//TODO try catch in here for deletion (?)
+		return true;
 	}
 
 }

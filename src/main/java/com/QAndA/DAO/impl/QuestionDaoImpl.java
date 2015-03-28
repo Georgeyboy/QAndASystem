@@ -2,8 +2,11 @@ package com.QAndA.DAO.impl;
 
 import com.QAndA.DAO.QuestionDao;
 import com.QAndA.Domain.Question;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -23,7 +26,7 @@ public class QuestionDaoImpl implements QuestionDao {
 	@Transactional
 	public Question save(Question question) {
 		Session session = sessionFactory.getCurrentSession();
-		long id = (Long) session.save(question); //TODO check this actually returns the id
+		long id = (Long) session.save(question);
 		question.setId(id);
 
 		return question;
@@ -38,10 +41,8 @@ public class QuestionDaoImpl implements QuestionDao {
 	@Override
 	@Transactional
 	public Question update(Question question) {
-		Question updatedQuestion = this.get(question.getId());
-		updatedQuestion.setTitle(question.getTitle());
-		updatedQuestion.setUser(question.getUser());
-		return null;
+		sessionFactory.getCurrentSession().saveOrUpdate(question);
+		return this.get(question.getId());
 	}
 
 	@Override
@@ -49,7 +50,7 @@ public class QuestionDaoImpl implements QuestionDao {
 	public boolean delete(Question question) {
 		Session session = sessionFactory.getCurrentSession();
 		session.delete(question);
-		return true;//TODO try catch in here for deletion
+		return true;
 	}
 
 	@Override
@@ -59,5 +60,49 @@ public class QuestionDaoImpl implements QuestionDao {
 		List<Question> questions = session.createQuery("FROM Question r ORDER BY r.id desc").setMaxResults(limit).list();
 
 		return questions;
+	}
+
+	@Override
+	@Transactional
+	public List<Question> searchQuestions(String query, Integer startLimit, Integer endLimit) {
+		if(startLimit == null){
+			startLimit = 0;
+		}
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Question.class);
+		criteria.setFirstResult(0);
+
+//		Adjust search query
+		String[] queryList = query.split(" ");
+		for(String q : queryList){
+			q = "%" + q + "%";
+			criteria.add(Restrictions.like("title", q).ignoreCase());
+		}
+//		query = "%" + query + "%";
+//
+//		criteria.add(Restrictions.like("title", query).ignoreCase());
+
+//		Add end limit if exists
+		if(endLimit != null){
+			criteria.setMaxResults(endLimit);
+		}
+
+		List<Question> results = criteria.list();
+		return results;
+	}
+
+	@Override
+	@Transactional
+	public long getSearchCount(String query){
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Question.class);
+//		Adjust search query
+		query = "%" + query + "%";
+//		TODO Split query on spaces for multiple word search (use .and?)
+		criteria.add(Restrictions.like("title", query));
+		criteria.setProjection(Projections.rowCount());
+		long count = (Long) criteria.uniqueResult();
+		System.out.println("Search count for query : '" + query + "' = " + count);
+		return count;
 	}
 }

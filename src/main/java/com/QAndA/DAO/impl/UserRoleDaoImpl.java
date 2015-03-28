@@ -23,7 +23,7 @@ public class UserRoleDaoImpl implements UserRoleDao {
 	@Transactional
 	public UserRole save(UserRole userRole) {
 		Session session = sessionFactory.getCurrentSession();
-		long id = (Long) session.save(userRole); //TODO check this actually returns the id
+		long id = (Long) session.save(userRole);
 		userRole.setId(id);
 
 		return userRole;
@@ -38,12 +38,8 @@ public class UserRoleDaoImpl implements UserRoleDao {
 	@Override
 	@Transactional
 	public UserRole update(UserRole userRole) {
-		UserRole updatedRole = this.get(userRole.getId());
-		updatedRole.setId(userRole.getId());
-		updatedRole.setUser(userRole.getUser());
-		updatedRole.setRole(userRole.getRole());
-		this.save(updatedRole);
-		return updatedRole;
+		sessionFactory.getCurrentSession().saveOrUpdate(userRole);
+		return this.get(userRole.getId());
 	}
 
 	@Override

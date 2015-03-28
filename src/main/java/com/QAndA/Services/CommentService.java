@@ -10,6 +10,8 @@ import com.QAndA.Domain.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -48,6 +50,8 @@ public class CommentService {
 		dto.setComment(comment.getComment());
 		dto.setTargetId(String.valueOf(comment.getTargetId()));
 		dto.setUser(String.valueOf(comment.getUsername()));
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy HH:mm");
+		dto.setDate(dateFormat.format(comment.getDate()));
 		return dto;
 	}
 

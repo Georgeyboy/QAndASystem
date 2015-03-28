@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Q and A System</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+</head>
+
+
+<body>
+
+<div id="nav" th:include="common/navbar"></div>
+
+<!-- Nav bar spacer -->
+<br />
+<br />
+<br />
+<!-- End spacer -->
+
+<!-- Log in Error -->
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div th:each="alert : ${errors}">
+            <div class="alert alert-danger" role="alert" th:text="${alert}"></div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+<div class="container">
+
+
+    <footer>
+        <p>George Harris - Third year project - Basic Version - University of Southampton</p>
+    </footer>
+</div> <!-- /container -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+
+</body>
+
+
+</html>
