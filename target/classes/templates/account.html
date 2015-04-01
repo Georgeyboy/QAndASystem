@@ -36,10 +36,14 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-12">
+        <div class="col-md-4">
             <br />
-            <h1 th:text="${dto.username}" class="text-center"></h1>
+            <h1 th:text="${dto.username}"></h1>
+            <p th:text="@{|${dto.firstName} ${dto.lastName}|}"></p>
             <br />
+        </div>
+    <!--</div>-->
+        <div class="col-md-8">
             <!--Questions-->
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -53,13 +57,11 @@
                 <div class="panel-body" th:if="${dto.questions.isEmpty()}">
                     <p th:text="|${dto.username} has not asked any questions yet.|"></p>
                 </div>
+                <div class="panel-footer"  style="text-align: right">
+                    <a class="btn btn-success" th:href="@{/askQuestion}" role="button">Ask a question &raquo;</a>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="row">
-
-        <div class="col-md-12">
             <!--Answers-->
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -74,10 +76,9 @@
                     <p th:text="|${dto.username} has not answered any questions yet.|"></p>
                 </div>
             </div>
-
         </div>
-
     </div>
+
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

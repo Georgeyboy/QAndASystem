@@ -26,6 +26,8 @@ public class AccountService {
 
 		AccountDto dto = new AccountDto();
 		dto.setUsername(user.getUsername());
+		dto.setFirstName(user.getfName());
+		dto.setLastName(user.getlName());
 
 
 		for(Question question : user.getQuestions()){

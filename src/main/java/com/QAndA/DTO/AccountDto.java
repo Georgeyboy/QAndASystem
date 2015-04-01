@@ -11,6 +11,8 @@ public class AccountDto {
 	private String username;
 	private List<QuestionDTO> questions = new ArrayList<QuestionDTO>();
 	private List<QuestionDTO> answers = new ArrayList<QuestionDTO>();
+	private String firstName;
+	private String lastName;
 
 	public String getUsername() {
 		return username;
@@ -34,6 +36,22 @@ public class AccountDto {
 
 	public void setAnswers(List<QuestionDTO> answers) {
 		this.answers = answers;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public void addQuestion(String title, String link){

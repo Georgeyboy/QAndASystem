@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
   <data-source source="LOCAL" name="PostgreSQL - dbp3tq7i4s8pnp?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory@ec2-107-20-169-200.compute-1.amazonaws.com" uuid="8f14d162-a35d-41b0-ab5d-42ad030bc797">
-    <database-info product="PostgreSQL" version="9.3.5" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.3 JDBC4 (build 1100)">
+    <database-info product="PostgreSQL" version="9.3.6" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.3 JDBC4 (build 1100)">
       <identifier-quote-string>&quot;</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/>
@@ -2339,19 +2339,33 @@
     <table name="qa_answer" schema="public" catalog="dbp3tq7i4s8pnp" type="TABLE">
       <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="answer" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
       <column name="question_id" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="user_id" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <primary-key name="qa_answer_pkey" columns="id"/>
       <foreign-key name="fk_o2ieh7urjrh6xnqnjbrtbds3s" columns="question_id" ref-table="qa_question" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="fk_f0pd0srvbluxa4y7unlo78vnn" columns="user_id" ref-table="qa_user" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_g74g5cv1u6kbf9l4fh53lkfg6" table="qa_comment" schema="public" catalog="dbp3tq7i4s8pnp" columns="answer_id"/>
+    </table>
+    <table name="qa_comment" schema="public" catalog="dbp3tq7i4s8pnp" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="comment" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="date" sqlType="timestamp" precision="29" scale="6" nullable="true" jdbcType="93"/>
+      <column name="targetid" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="username" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="answer_id" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <column name="question_id" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="qa_comment_pkey" columns="id"/>
+      <foreign-key name="fk_g74g5cv1u6kbf9l4fh53lkfg6" columns="answer_id" ref-table="qa_answer" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_hg3ce8bpvk4oy3ss8p5bkinij" columns="question_id" ref-table="qa_question" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="qa_notification" schema="public" catalog="dbp3tq7i4s8pnp" type="TABLE">
       <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="link" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="message" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="read" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
       <column name="title" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="user_id" sqlType="int8" precision="19" scale="0" nullable="true" jdbcType="-5"/>
-      <column name="read" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
       <primary-key name="qa_notification_pkey" columns="id"/>
       <foreign-key name="fk_9tr397fxf6fwb6hvitqrwps6n" columns="user_id" ref-table="qa_user" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
@@ -2364,14 +2378,14 @@
       <primary-key name="qa_question_pkey" columns="id"/>
       <foreign-key name="fk_qj4fvv78p3vsbr1mnh5yapf2m" columns="user_id" ref-table="qa_user" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="fk_o2ieh7urjrh6xnqnjbrtbds3s" table="qa_answer" schema="public" catalog="dbp3tq7i4s8pnp" columns="question_id"/>
+      <exported-key name="fk_hg3ce8bpvk4oy3ss8p5bkinij" table="qa_comment" schema="public" catalog="dbp3tq7i4s8pnp" columns="question_id"/>
     </table>
     <table name="qa_user" schema="public" catalog="dbp3tq7i4s8pnp" type="TABLE">
       <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="avatarlocation" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="email" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
       <column name="fname" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="lname" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
-      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
       <column name="password" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="username" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="qa_user_pkey" columns="id"/>
