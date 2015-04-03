@@ -32,7 +32,7 @@
 <!-- End spacer -->
 <br />
 
-<div class="container">
+<div class="container well">
     <div class="row">
         <div class="col-md-2">
         </div>
@@ -46,12 +46,12 @@
                 </div>
                 <div class="panel-body" th:if="!${questions.isEmpty()}">
                     <div th:each="question : ${questions}">
-                        <a th:href="${question.link}" th:text="${question.title}"></a>
+                        <a th:href="|/basic${question.link}" th:text="${question.title}"></a>
                     </div>
                 </div>
 
                 <div class="panel-body" th:if="${questions.isEmpty()}">
-                    <p>There are no recent questions at this time. <a th:href="@{/askQuestion}">Why not ask one?</a></p>
+                    <p>There are no recent questions at this time. <a th:href="@{/basic/askQuestion}">Why not ask one?</a></p>
                 </div>
             </div>
         </div>

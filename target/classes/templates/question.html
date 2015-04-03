@@ -34,7 +34,7 @@
 <!-- End spacer -->
 <br />
 
-<div class="container">
+<div class="container well">
     <div class="row">
         <div class="col-md-2">
         </div>
@@ -52,7 +52,7 @@
                             <p th:text="${question.date}"></p>
                         </div>
                         <div class="col-md-6" style="text-align: right">
-                            <a th:text="${question.username}" th:href="@{|/user/${question.username}|}" ></a>
+                            <a th:text="${question.username}" th:href="@{|/basic/user/${question.username}|}" ></a>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                                     <p th:text="${question.date}"></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <a th:text="${comment.user}" th:href="@{|/user/${comment.user}|}" style="text-align: right"></a>
+                                    <a th:text="${comment.user}" th:href="@{|/basic/user/${comment.user}|}" style="text-align: right"></a>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                         <div class="collapse" id="newComment">
                             <div class="well">
                                 <!--<div th:if="${loggedIn == true}">-->
-                                <form id="commentForm" name="commentForm" th:action="@{/postComment}" method="post">
+                                <form id="commentForm" name="commentForm" th:action="@{/basic/postComment}" method="post">
                                     <div class= "form-group">
                                         <textarea class="form-control" rows="2" id="commentText" name="commentText" placeholder="Comment" form="commentForm"></textarea>
                                     </div>
@@ -115,6 +115,13 @@
             </div>
             <br />
             <br />
+        </div>
+        <div class="col-md-2"></div>
+    </div> <!-- /row -->
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
 
             <!-- Answers -->
             <div th:if="!${answers.isEmpty()}">
@@ -126,8 +133,8 @@
                                 <div class="col-md-6">
                                     <p th:text="${answer.date}"></p>
                                 </div>
-                                <div class="col-md-6">
-                                    <a th:text="${answer.username}" th:href="@{|/user/${answer.username}|}" style="text-align: right"></a>
+                                <div class="col-md-6" style="text-align: right">
+                                    <a th:text="${answer.username}" th:href="@{|/basic/user/${answer.username}|}" ></a>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +157,7 @@
                                             <p th:text="${comment.date}"></p>
                                         </div>
                                         <div class="col-md-6">
-                                            <a th:text="${comment.user}" th:href="@{|/user/${comment.user}|}" style="text-align: right"></a>
+                                            <a th:text="${comment.user}" th:href="@{|/basic/user/${comment.user}|}" style="text-align: right"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +173,7 @@
                                 <div class="collapse" th:id="|commentForm${answer.id}|">
                                     <div class="well">
                                         <!--<div th:if="${loggedIn == true}">-->
-                                        <form th:id="|answerCommentForm${answer.id}|" th:name="|answerCommentForm${answer.id}|" th:action="@{/postComment}" method="post">
+                                        <form th:id="|answerCommentForm${answer.id}|" th:name="|answerCommentForm${answer.id}|" th:action="@{/basic/postComment}" method="post">
                                             <div class= "form-group">
                                                 <textarea class="form-control" rows="2"  name="commentText" placeholder="Comment" th:form="|answerCommentForm${answer.id}|"></textarea>
                                             </div>
@@ -211,7 +218,7 @@
             <div th:if="${loggedIn == true}" >
                 <h3>Think you can help? Post an answer below!</h3>
 
-                <form id="answerForm" name="answerForm" th:action="@{/postAnswer}" th:object="${dto}" method="post">
+                <form id="answerForm" name="answerForm" th:action="@{/basic/postAnswer}" th:object="${dto}" method="post">
                     <div class="form-group">
                         <!--<label for="answer">Answer</label>-->
                         <textarea class="form-control" rows="5" id="answer" placeholder="Answer" th:field="*{description}" form="answerForm"></textarea>

@@ -5,13 +5,23 @@
  */
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+}
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+    position: relative;
+    min-height: 100%;
 }
 body {
-  margin: 0;
+
+   margin: 0 0 100px; /* bottom = footer height */
 }
 article,
 aside,
@@ -6570,4 +6580,4 @@ button.close {
     display: none !important;
   }
 }
-/*# sourceMappingURL=bootstrap.css.map */
+/* sourceMappingURL=bootstrap.css.map */

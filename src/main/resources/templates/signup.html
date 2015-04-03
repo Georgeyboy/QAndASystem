@@ -49,7 +49,7 @@
 
 
             <h2>Sign up here!</h2>
-            <form th:action="@{/signUp}" th:object="${dto}" method="post">
+            <form th:action="@{/basic/signUp}" th:object="${dto}" method="post">
                 <div class="form-group">
                     <label for="fname">First Name</label>
                     <input type="text" class="form-control" id="fname" placeholder="First Name" th:field="*{fname}">

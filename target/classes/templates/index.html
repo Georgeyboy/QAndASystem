@@ -23,7 +23,7 @@
 
 <body>
 
-<div id="nav" th:include="common/navbar"></div>
+<div id="nav" th:include="/common/navbar"></div>
 
 <!-- Nav bar spacer -->
 <br />
@@ -32,15 +32,16 @@
 <!-- End spacer -->
 
 <!-- Log in Error -->
-
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-        <div th:each="alert : ${loginerror}">
-            <div class="alert alert-danger" role="alert">There was a problem logging you in - please check your username and password and try logging in again.</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div th:each="alert : ${loginerror}">
+                <div class="alert alert-danger" role="alert">There was a problem logging you in - please check your username and password and try logging in again.</div>
+            </div>
         </div>
+        <div class="col-md-3"></div>
     </div>
-    <div class="col-md-3"></div>
 </div>
 
 
@@ -50,7 +51,7 @@
     <div class="container">
         <h1>Hello, World!</h1>
         <p>Welcome to this question / answer service for a third year dissertation project. This is the basic version, with no reputation service. View the other version here (in prod).</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Reputation Version &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg" href="/rep/" role="button">Reputation Version &raquo;</a></p>
     </div>
 </div>
 
@@ -60,17 +61,17 @@
         <div class="col-md-4">
             <h2>Questions?</h2>
             <p>Of course you do! Submit a question here for the community to answer.</p>
-            <p><a class="btn btn-default" th:href="@{/askQuestion}" role="button">Ask a question &raquo;</a></p>
+            <p><a class="btn btn-default" th:href="@{/basic/askQuestion}" role="button">Ask a question &raquo;</a></p>
         </div>
         <div class="col-md-4">
             <h2>Answers!</h2>
             <p>View some recent questions and see if you can help.</p>
-            <p><a class="btn btn-default" th:href="@{/recentQuestions}" role="button">View questions &raquo;</a></p>
+            <p><a class="btn btn-default" th:href="@{/basic/recentQuestions}" role="button">View questions &raquo;</a></p>
         </div>
         <div class="col-md-4">
             <h2>Sign Up</h2>
             <p>Sign up here to ask or answer a question.</p>
-            <p><a class="btn btn-default" th:href="@{/signUp}" role="button">Sign up &raquo;</a></p>
+            <p><a class="btn btn-default" th:href="@{/basic/signUp}" role="button">Sign up &raquo;</a></p>
         </div>
     </div>
 

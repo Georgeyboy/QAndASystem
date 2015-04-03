@@ -3,6 +3,7 @@ package com.QAndA;
 import com.QAndA.Domain.*;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +27,12 @@ import java.util.Properties;
 //@Import({ SecurityLoginConfig.class })
 public class Config extends WebMvcConfigurerAdapter {
 
+	private String[] args;
+
+	@Value("${env}")
+	private String env;
+
+
 	/**
 	 * Server Start point.
 	 * @param args
@@ -36,33 +43,45 @@ public class Config extends WebMvcConfigurerAdapter {
 		if (webPort == null || webPort.isEmpty()) {
 			webPort = "8080";
 		}
+
 		System.setProperty("server.port", webPort);
 		SpringApplication.run(Config.class, args);
 	}
 
-//	Heroku datasource
-	@Bean(name = "dataSource")
-	public DataSource dataSource() throws Exception {
-		final URI dbUrl = new URI(System.getenv("DATABASE_URL"));
-		final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://" + dbUrl.getHost() + dbUrl.getPath());
-		dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
-		dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
-		return dataSource;
-	}
 
-//	//	Local datasource
+////	Heroku datasource
 //	@Bean(name = "dataSource")
 //	public DataSource dataSource() throws Exception {
-////		final URI dbUrl = new URI(System.getenv("DATABASE_URL"));
+//		final URI dbUrl = new URI(System.getenv("DATABASE_URL"));
 //		final DriverManagerDataSource dataSource = new DriverManagerDataSource();
 //		dataSource.setDriverClassName("org.postgresql.Driver");
-//		dataSource.setUrl("jdbc:postgresql://localhost:5432/qalocal");
-//		dataSource.setUsername("localuser");
-//		dataSource.setPassword("localuser");
+//		dataSource.setUrl("jdbc:postgresql://" + dbUrl.getHost() + dbUrl.getPath());
+//		dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
+//		dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
 //		return dataSource;
 //	}
+
+	//	Local datasource
+	@Bean(name = "dataSource")
+	public DataSource dataSource() throws Exception {
+		if(env.equals("prod")){
+			final URI dbUrl = new URI(System.getenv("DATABASE_URL"));
+			final DriverManagerDataSource dataSource = new DriverManagerDataSource();
+			dataSource.setDriverClassName("org.postgresql.Driver");
+			dataSource.setUrl("jdbc:postgresql://" + dbUrl.getHost() + dbUrl.getPath());
+			dataSource.setUsername(dbUrl.getUserInfo().split(":")[0]);
+			dataSource.setPassword(dbUrl.getUserInfo().split(":")[1]);
+			return dataSource;
+		}else {
+			//		final URI dbUrl = new URI(System.getenv("DATABASE_URL"));
+			final DriverManagerDataSource dataSource = new DriverManagerDataSource();
+			dataSource.setDriverClassName("org.postgresql.Driver");
+			dataSource.setUrl("jdbc:postgresql://localhost:5432/qalocal");
+			dataSource.setUsername("localuser");
+			dataSource.setPassword("localuser");
+			return dataSource;
+		}
+	}
 
 	@Autowired
 	@Bean(name = "sessionFactory")

@@ -35,38 +35,60 @@
 
 
 
-<div class="container">
+<div class="container well ">
 
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-6">
+    <!--<div class="col-md-2"></div>-->
+    <div class="col-md-8">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h2 style="text-align: center" class="panel-title" th:text="@{|Search results for '${searchPacket.query}'|}">Search Results</h2>
+
             </div>
             <div class="panel-body">
-                <div th:each="result : ${searchPacket.results}">
-                    <h5><a th:text="${result.title}" th:href="${result.link}"></a></h5>
+                <div th:if="${!searchPacket.results.isEmpty()}">
+                    <div th:each="result : ${searchPacket.results}">
+                        <h5><a th:text="${result.title}" th:href="${result.link}"></a></h5>
+                    </div>
+                </div>
+                <div th:if="${searchPacket.results.isEmpty()}">
+                    <h4>This search returned no results. Please try using phrasing your query in another way</h4>
                 </div>
             </div>
             <div class="panel-footer">
                 <nav >
-                    <ul class="pager">
-                        <li>
-                            <a href="#" aria-label="Previous">
+                    <ul class="pagination">
+                        <!-- 'Previous' button disabled if on first page -->
+                        <li th:if="${searchPacket.pageNumber == 1}" class="disabled">
+                            <a aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
+                        <li th:if="${searchPacket.pageNumber != 1}">
+                            <a th:href="@{|/basic/searchResults/${(searchPacket.pageNumber - 1)}|}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <!-- Results -->
+
                         <li th:each="i : ${#numbers.sequence( 1, searchPacket.maxPages)}">
-                            <a th:if="${searchPacket.pageNumber == i}" class="active" th:href="@{|/searchResults/${i}|}" th:text="${i}"></a>
-                            <a th:if="${searchPacket.pageNumber != i}" th:href="@{|/searchResults/${i}|}" th:text="${i}"></a></li>
+                            <a th:if="${searchPacket.pageNumber == i}" th:href="@{|/basic/searchResults/${i}|}" th:text="${i}"></a>
+                            <a th:if="${searchPacket.pageNumber != i}" th:href="@{|/basic/searchResults/${i}|}" th:text="${i}"></a></li>
                         </li>
 
-                        <li>
-                            <a href="#" aria-label="Next">
+                        <!-- 'Next' button disabled if on last page -->
+                        <li th:if="${searchPacket.pageNumber == searchPacket.maxPages}" class="disabled">
+                            <a th:href="@{|/basic/searchResults/${(searchPacket.pageNumber + 1)}|}" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
+
+                        <li th:if="${searchPacket.pageNumber != searchPacket.maxPages}" >
+                            <a aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
             </div>
@@ -82,7 +104,7 @@
             </div>
             <div class="panel-body">
                 <p>Why not ask a question yourself!</p>
-                <a class="btn btn-default" th:href="@{/askQuestion}" role="button">Ask a question &raquo;</a>
+                <a class="btn btn-default" th:href="@{/basic/askQuestion}" role="button">Ask a question &raquo;</a>
             </div>
         </div>
     </div>

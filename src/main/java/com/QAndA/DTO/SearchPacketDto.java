@@ -8,34 +8,34 @@ import java.util.List;
  */
 public class SearchPacketDto {
 
-	private String pageNumber;
-	private String maxPages;
-	private String resultsPerPage;
+	private int pageNumber;
+	private int maxPages;
+	private int resultsPerPage;
 	private String query;
 	private List<QuestionDTO> results = new ArrayList<QuestionDTO>();
 
 
-	public String getPageNumber() {
+	public int getPageNumber() {
 		return pageNumber;
 	}
 
-	public void setPageNumber(String pageNumber) {
+	public void setPageNumber(int pageNumber) {
 		this.pageNumber = pageNumber;
 	}
 
-	public String getMaxPages() {
+	public int getMaxPages() {
 		return maxPages;
 	}
 
-	public void setMaxPages(String maxPages) {
+	public void setMaxPages(int maxPages) {
 		this.maxPages = maxPages;
 	}
 
-	public String getResultsPerPage() {
+	public int getResultsPerPage() {
 		return resultsPerPage;
 	}
 
-	public void setResultsPerPage(String resultsPerPage) {
+	public void setResultsPerPage(int resultsPerPage) {
 		this.resultsPerPage = resultsPerPage;
 	}
 

@@ -31,9 +31,9 @@ public class SearchService {
 		System.out.println("Query : " + dto.getQuery());
 
 		SearchPacket result = new SearchPacket();
-		result.setMaxPages(Integer.parseInt(dto.getMaxPages()));
-		result.setPageNumber(Integer.parseInt(dto.getPageNumber()));
-		result.setResultsPerPage(Integer.parseInt(dto.getResultsPerPage()));
+		result.setMaxPages(dto.getMaxPages());
+		result.setPageNumber(dto.getPageNumber());
+		result.setResultsPerPage(dto.getResultsPerPage());
 		result.setQuery(dto.getQuery());
 //		Results are not set as they will not be needed. QuestionDto's will never be needed to pass back to the controller from the search platform
 		return result;
@@ -41,9 +41,9 @@ public class SearchService {
 
 	public SearchPacketDto searchPacketToDto(SearchPacket searchPacket){
 		SearchPacketDto dto = new SearchPacketDto();
-		dto.setMaxPages(String.valueOf(searchPacket.getMaxPages()));
-		dto.setPageNumber(String.valueOf(searchPacket.getPageNumber()));
-		dto.setResultsPerPage(String.valueOf(searchPacket.getResultsPerPage()));
+		dto.setMaxPages(searchPacket.getMaxPages());
+		dto.setPageNumber(searchPacket.getPageNumber());
+		dto.setResultsPerPage(searchPacket.getResultsPerPage());
 		dto.setQuery(searchPacket.getQuery());
 		dto.setResults(questionService.questionsToDtos(searchPacket.getResults()));
 		return dto;

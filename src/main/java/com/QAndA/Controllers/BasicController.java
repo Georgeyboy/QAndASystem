@@ -4,7 +4,6 @@ import com.QAndA.DAO.UserDao;
 import com.QAndA.DTO.*;
 import com.QAndA.Domain.Answer;
 import com.QAndA.Domain.Question;
-import com.QAndA.Domain.SearchPacket;
 import com.QAndA.Domain.User;
 import com.QAndA.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +14,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
 * Created by George on 10/02/2015.
 */
 @Controller
-//@RequestMapping("/basic")
+@RequestMapping("/basic")
 public class BasicController {
 
 	@Autowired
@@ -55,11 +51,8 @@ public class BasicController {
 
 	@ModelAttribute("loggedIn")
 	public boolean loggedIn(){
-		System.out.println(SecurityContextHolder.getContext().toString());
-		System.out.println(SecurityContextHolder.getContext().getAuthentication().toString());
-		System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
+		System.out.println("MCloggedIn()");
 		Object user = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println("!! USER : " + user.toString());
 		if(user instanceof String){
 //			No logged in user
 			return false;
@@ -71,11 +64,8 @@ public class BasicController {
 
 	@ModelAttribute("currentUser")
 	public String username(){
-		System.out.println(SecurityContextHolder.getContext().toString());
-		System.out.println(SecurityContextHolder.getContext().getAuthentication().toString());
-		System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
+		System.out.println("MCuserName()");
 		Object user = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println("!! USER : " + user.toString());
 		if(user instanceof String){
 //			No logged in user
 			return "NO USER";
@@ -93,7 +83,7 @@ public class BasicController {
 
 
 
-	@RequestMapping("/")
+	@RequestMapping("")
 	public String index(final Model model,
 					   @RequestParam(value = "loginerror", required = false) String error){
 
@@ -203,10 +193,11 @@ public class BasicController {
 
 		if(submitPasssed) {
 //			Form has passed!
-			String username = this.username();
+			String username = username();
 			User user = userService.findByUsername(username);
 			Question question = questionService.saveQuestion(dto, user);
-			return "redirect:/question/" + question.getId();
+			model.asMap().clear();
+			return "redirect:/basic/question/" + question.getId();
 		}
 
 		model.addAttribute("submitFail", submitFail);
@@ -260,8 +251,8 @@ public class BasicController {
 		dto.setTargetId(targetId);
 
 		commentService.saveComment(dto);
-
-		return "redirect:/question/" + questionId;
+		model.asMap().clear();
+		return "redirect:/basic/question/" + questionId;
 	}
 
 
@@ -270,8 +261,8 @@ public class BasicController {
 		System.out.println("user: " + dto.getUsername());
 
 		Answer answer = answerService.saveAnswer(dto, userService.findByUsername(username()), questionService.getQuestion(dto.getQuestionID()));
-
-		return "redirect:/question/" + dto.getQuestionID();
+		model.asMap().clear();
+		return "redirect:/basic/question/" + dto.getQuestionID();
 	}
 
 
@@ -320,8 +311,8 @@ public class BasicController {
 		SearchPacketDto resultPacket = searchService.searchPacketToDto(searchService.initialSearch(query));
 
 		layoverPacket = resultPacket;
-
-		return "redirect:/searchResults/1";
+		model.asMap().clear();
+		return "redirect:/basic/searchResults/1";
 	}
 
 	@RequestMapping(value = "/searchResults/{pageNumber}", method = RequestMethod.GET)
@@ -329,7 +320,7 @@ public class BasicController {
 		System.out.println("/searchResults/" + pageNumber + " hit!");
 		SearchPacketDto searchPacket = new SearchPacketDto();
 		searchPacket.setQuery(layoverPacket.getQuery());
-		searchPacket.setPageNumber(pageNumber);
+		searchPacket.setPageNumber(Integer.parseInt(pageNumber));
 		searchPacket.setMaxPages(layoverPacket.getMaxPages());
 		searchPacket.setResultsPerPage(layoverPacket.getResultsPerPage());
 		searchPacket.setResults(questionService.questionsToDtos(searchService.getSearchResultsPage(searchService.dtoToSearchPacket(searchPacket))));
