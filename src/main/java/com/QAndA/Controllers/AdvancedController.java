@@ -199,7 +199,7 @@ public class AdvancedController {
 			User user = userService.findByUsername(username);
 			Question question = questionService.saveQuestion(dto, user);
 			model.asMap().clear();
-			return "redirect:/basic/question/" + question.getId();
+			return "redirect:/rep/question/" + question.getId();
 		}
 
 		model.addAttribute("submitFail", submitFail);
@@ -254,7 +254,7 @@ public class AdvancedController {
 
 		commentService.saveComment(dto);
 		model.asMap().clear();
-		return "redirect:/rep/questionR/" + questionId;
+		return "redirect:/rep/question/" + questionId;
 	}
 
 
@@ -264,7 +264,7 @@ public class AdvancedController {
 
 		Answer answer = answerService.saveAnswer(dto, userService.findByUsername(username()), questionService.getQuestion(dto.getQuestionID()));
 		model.asMap().clear();
-		return "redirect:/rep/questionR/" + dto.getQuestionID();
+		return "redirect:/rep/question/" + dto.getQuestionID();
 	}
 
 
@@ -314,7 +314,7 @@ public class AdvancedController {
 
 		layoverPacket = resultPacket;
 		model.asMap().clear();
-		return "redirect:/rep/searchResultsR/1";
+		return "redirect:/rep/searchResults/1";
 	}
 
 	@RequestMapping(value = "/searchResults/{pageNumber}", method = RequestMethod.GET)

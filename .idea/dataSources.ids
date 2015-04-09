@@ -2387,6 +2387,7 @@
       <column name="fname" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="lname" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="password" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="rp" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="username" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="qa_user_pkey" columns="id"/>
       <exported-key name="fk_f0pd0srvbluxa4y7unlo78vnn" table="qa_answer" schema="public" catalog="dbp3tq7i4s8pnp" columns="user_id"/>
