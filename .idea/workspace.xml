@@ -26,18 +26,18 @@
       <file leaf-file-name="accountR.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/rep/accountR.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="306" max-vertical-offset="1955">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="1989">
+              <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="questionR.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/rep/questionR.html">
+      <file leaf-file-name="account.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/account.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.9444444" vertical-offset="963" max-vertical-offset="6069">
-              <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.25993884" vertical-offset="0" max-vertical-offset="1819">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -73,10 +73,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.properties" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.025" vertical-offset="0" max-vertical-offset="680">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="153">
               <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
               <folding />
             </state>
@@ -117,7 +117,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/Controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/common/footer.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/common/navbar.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/account.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/askquestion.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/error.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/question.html" />
@@ -137,7 +136,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/rep/askquestionR.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/rep/errorR.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/DTO/AccountDto.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/rep/accountR.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/DTO/CommentDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/DTO/AnswerDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/DTO/QuestionDTO.java" />
@@ -154,6 +152,8 @@
         <option value="dbtable:/47b127ac/8f14d162-a35d-41b0-ab5d-42ad030bc797/dbp3tq7i4s8pnp.public.qa_answer" />
         <option value="dbtable:/47b127ac/c1a39625-0729-49d5-8160-05943abaa619/qalocal.public.qa_user" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/rep/questionR.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/rep/accountR.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/account.html" />
       </list>
     </option>
   </component>
@@ -1191,12 +1191,12 @@
       <workItem from="1428485064594" duration="16121000" />
       <workItem from="1428524675811" duration="7376000" />
       <workItem from="1428588601786" duration="5528000" />
-      <workItem from="1428615515032" duration="984000" />
+      <workItem from="1428615515032" duration="1239000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="404782000" />
+    <option name="totallyTimeSpent" value="405037000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1349,13 +1349,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/account.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.153846" vertical-offset="135" max-vertical-offset="1819">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/askquestion.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.153846" vertical-offset="135" max-vertical-offset="1445">
@@ -1482,13 +1475,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/rep/askquestionR.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5370968" vertical-offset="92" max-vertical-offset="1445">
-          <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/rep/errorR.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.041935485" vertical-offset="451" max-vertical-offset="1071">
@@ -1508,13 +1494,13 @@
         <state vertical-scroll-proportion="0.39473686" vertical-offset="0" max-vertical-offset="969">
           <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
           <folding>
-            <element signature="e#312#313#0" expanded="true" />
-            <element signature="e#354#355#0" expanded="true" />
-            <element signature="e#381#382#0" expanded="true" />
-            <element signature="e#415#416#0" expanded="true" />
-            <element signature="e#438#439#0" expanded="true" />
-            <element signature="e#486#487#0" expanded="true" />
-            <element signature="e#519#520#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="false" />
+            <element signature="e#354#355#0" expanded="false" />
+            <element signature="e#381#382#0" expanded="false" />
+            <element signature="e#415#416#0" expanded="false" />
+            <element signature="e#438#439#0" expanded="false" />
+            <element signature="e#486#487#0" expanded="false" />
+            <element signature="e#519#520#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1524,15 +1510,15 @@
         <state vertical-scroll-proportion="0.5" vertical-offset="0" max-vertical-offset="1292">
           <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
           <folding>
-            <element signature="e#402#403#0" expanded="true" />
-            <element signature="e#444#445#0" expanded="true" />
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
-            <element signature="e#528#529#0" expanded="true" />
-            <element signature="e#576#577#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#636#637#0" expanded="true" />
-            <element signature="e#652#653#0" expanded="true" />
+            <element signature="e#402#403#0" expanded="false" />
+            <element signature="e#444#445#0" expanded="false" />
+            <element signature="e#471#472#0" expanded="false" />
+            <element signature="e#505#506#0" expanded="false" />
+            <element signature="e#528#529#0" expanded="false" />
+            <element signature="e#576#577#0" expanded="false" />
+            <element signature="e#609#610#0" expanded="false" />
+            <element signature="e#636#637#0" expanded="false" />
+            <element signature="e#652#653#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1624,14 +1610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/rep/accountR.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1955">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/47b127ac/8f14d162-a35d-41b0-ab5d-42ad030bc797/dbp3tq7i4s8pnp.public.qa_user">
       <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
         <state />
@@ -1649,14 +1627,6 @@
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/rep/questionR.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.9444444" vertical-offset="963" max-vertical-offset="6069">
-          <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1686,8 +1656,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.025" vertical-offset="0" max-vertical-offset="680">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="153">
           <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/rep/askquestionR.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.0631068" vertical-offset="0" max-vertical-offset="1445">
+          <caret line="75" column="0" selection-start-line="71" selection-start-column="50" selection-end-line="75" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/rep/questionR.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24959217" vertical-offset="0" max-vertical-offset="6069">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="11" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/rep/accountR.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="1989">
+          <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/account.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25993884" vertical-offset="0" max-vertical-offset="1819">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
