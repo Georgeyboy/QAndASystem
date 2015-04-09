@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Q and A System</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+</head>
+
+
+<body>
+
+<div id="nav" th:include="common/navbarR"></div>
+
+<!-- Nav bar spacer -->
+<br />
+<br />
+<br />
+<!-- End spacer -->
+
+<!-- Log in Error -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div th:each="alert : ${loginerror}">
+                <div class="alert alert-danger" role="alert" th:text="${alert}"></div>
+                <!--TODO should this have the alert text?-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <h1>Reputation</h1>
+        <p>Welcome to this question / answer service for a third year dissertation project. This is the <b>reputation</b> version,  including the reputation service. View the basic version here.</p>
+        <p><a class="btn btn-primary btn-lg" th:href="@{/basic/}" role="button">Basic Version &raquo;</a></p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Questions?</h2>
+            <p>Of course you do! Submit a question here for the community to answer.</p>
+            <p><a class="btn btn-default" th:href="@{/rep/askQuestion}" role="button">Ask a question &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Answers!</h2>
+            <p>View some recent questions and see if you can help.</p>
+            <p><a class="btn btn-default" th:href="@{/rep/recentQuestions}" role="button">View questions &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Sign Up</h2>
+            <p>Sign up here to ask or answer a question.</p>
+            <p><a class="btn btn-default" th:href="@{/rep/signUp}" role="button">Sign up &raquo;</a></p>
+        </div>
+    </div>
+
+
+
+</div> <!-- /container -->
+
+<div id="footer" th:include="common/footer"></div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+
+</body>
+
+
+</html>

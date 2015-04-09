@@ -3,6 +3,7 @@ package com.QAndA.DAO.impl;
 import com.QAndA.DAO.UserDao;
 import com.QAndA.Domain.User;
 import com.QAndA.Exceptions.UsernameInUseException;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by George on 11/02/2015.
@@ -98,5 +100,14 @@ public class UserDaoImpl implements UserDao {
 		}else{
 			return null;
 		}
+	}
+
+	@Override
+	@Transactional
+	public Map<String, Integer> getVoteHistory(String username) {
+		User user = this.findByUsername(username);
+		Hibernate.initialize(user.getVoteHistory());
+		return user.getVoteHistory();
+
 	}
 }

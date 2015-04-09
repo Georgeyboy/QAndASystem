@@ -3,6 +3,8 @@ package com.QAndA.DAO;
 import com.QAndA.Domain.User;
 import com.QAndA.Exceptions.UsernameInUseException;
 
+import java.util.Map;
+
 /**
  * Created by George on 11/02/2015.
  */
@@ -21,6 +23,8 @@ public interface UserDao{
 	public void deactivateAccount(User user);
 
 	public User findByUsername(String username);
+
+	public Map<String, Integer> getVoteHistory(String username);
 
 
 }

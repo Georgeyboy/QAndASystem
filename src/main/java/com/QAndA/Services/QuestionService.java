@@ -27,13 +27,16 @@ public class QuestionService {
 	@Autowired
 	private CommentService commentService;
 
+	@Autowired
+	private AnswerService answerService;
+
 
 	public Question saveQuestion(QuestionDTO dto, User user){
 		Question question = new Question();
-
 		question.setTitle(dto.getTitle());
 		question.setQuestion(dto.getQuestion());
 		question.setUser(user);
+		question.setRp(0);
 
 		Date date = new Date();
 		question.setDate(date);
@@ -55,6 +58,7 @@ public class QuestionService {
 
 	public QuestionDTO questionToDto(Question question){
 		QuestionDTO dto = new QuestionDTO();
+		dto.setRp(question.getRp());
 		dto.setId(String.valueOf(question.getId()));
 		dto.setTitle(question.getTitle());
 		dto.setQuestion(question.getQuestion());
@@ -65,6 +69,9 @@ public class QuestionService {
 		List<Comment> comments = new ArrayList<Comment>();
 		comments.addAll(question.getComments());
 		dto.setComments(commentService.commentsToDto(comments));
+
+		dto.setUserRp(question.getUser().getRp());
+		dto.setUserLevel(question.getUser().calculateLevel());
 		return dto;
 	}
 
@@ -79,6 +86,17 @@ public class QuestionService {
 	
 	public List<QuestionDTO> getRecentQuestionsDtos(int limit){
 		return this.questionsToDtos(questionDao.getRecentQuestions(limit));
+	}
+
+	public void deleteQuestion(String id){
+		Question question = questionDao.get(Long.parseLong(id));
+		answerService.deleteAnswers(question.getAnswers());
+		questionDao.delete(questionDao.get(Long.parseLong(id)));
+
+	}
+
+	public Question update(Question question){
+		return questionDao.update(question);
 	}
 
 

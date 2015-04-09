@@ -34,6 +34,7 @@ public class AnswerService {
 		answer.setQuestion(question);
 		answer.setAnswer(dto.getDescription());
 		answer.setDate(new Date());
+		answer.setRp(0);
 
 		return answerDao.save(answer);
 	}
@@ -55,6 +56,10 @@ public class AnswerService {
 		result.setDescription(answer.getAnswer());
 		result.setQuestionID(String.valueOf(questionID));
 		result.setUsername(answer.getUser().getUsername());
+		result.setUserRp(answer.getUser().getRp());
+		result.setUserLevel(answer.getUser().calculateLevel());
+
+		result.setRp(answer.getRp());
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy HH:mm");
 		result.setDate(dateFormat.format(answer.getDate()));
 		result.setComments(commentService.commentsToDto(answer.getComments()));
@@ -64,6 +69,16 @@ public class AnswerService {
 	public Answer getAnswer(String id){
 		Long aid = Long.parseLong(id);
 		return answerDao.get(aid);
+	}
+
+	public Answer update(Answer answer){
+		return answerDao.update(answer);
+	}
+
+	public void deleteAnswers(Set<Answer> answers){
+		for(Answer answer : answers){
+			answerDao.delete(answer);
+		}
 	}
 
 }

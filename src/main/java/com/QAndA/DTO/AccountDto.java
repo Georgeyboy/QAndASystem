@@ -13,6 +13,17 @@ public class AccountDto {
 	private List<QuestionDTO> answers = new ArrayList<QuestionDTO>();
 	private String firstName;
 	private String lastName;
+	private Integer rp;
+	private Integer level = 0;
+
+	public Integer getRp() {
+		return rp;
+	}
+
+	public void setRp(Integer rp) {
+		this.rp = rp;
+		calculateLevel();
+	}
 
 	public String getUsername() {
 		return username;
@@ -54,6 +65,14 @@ public class AccountDto {
 		this.lastName = lastName;
 	}
 
+	public Integer getLevel() {
+		return level;
+	}
+
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
+
 	public void addQuestion(String title, String link){
 		QuestionDTO q = new QuestionDTO();
 		q.setTitle(title);
@@ -67,5 +86,22 @@ public class AccountDto {
 		a.setLink(link);
 		this.getAnswers().add(a);
 	}
+
+	private void calculateLevel(){
+		if(rp <= 0){
+			level = 0;
+		}else{
+
+			int bracket = 10;
+			int rpTemp = rp.intValue();
+			do{
+				rpTemp = rpTemp - bracket;
+				level++;
+				bracket += 10;
+			}while(rpTemp > 0);
+		}
+	}
+
+
 }
 

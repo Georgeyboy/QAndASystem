@@ -21,6 +21,7 @@ public class Answer{
 
 	private String answer;
 
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Question question;
 
@@ -28,6 +29,16 @@ public class Answer{
 	private List<Comment> comments;
 
 	private Date date;
+
+	private Integer rp;
+
+	public Integer getRp() {
+		return rp;
+	}
+
+	public void setRp(Integer rp) {
+		this.rp = rp;
+	}
 
 	public long getId() {
 		return id;

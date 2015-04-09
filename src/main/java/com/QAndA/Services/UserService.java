@@ -9,6 +9,8 @@ import com.QAndA.Exceptions.UsernameInUseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 /**
  * Created by George on 04/03/2015.
  */
@@ -30,6 +32,7 @@ public class UserService {
 		user.setlName(dto.getLname());
 		user.setUsername(dto.getUsername());
 		user.setPassword(dto.getPass1());
+		user.setRp(0);
 //		user.setAvatarLocation(dto.getAvatarLocation());
 
 		try {
@@ -51,4 +54,13 @@ public class UserService {
 	public User findByUsername(String username){
 		return userDao.findByUsername(username);
 	}
+
+	public User update(User user){
+		return userDao.update(user);
+	}
+
+	public Map<String, Integer> getVoteHistory(String username){
+		return userDao.getVoteHistory(username);
+	}
+
 }

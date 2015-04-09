@@ -23,7 +23,7 @@
 
 <body>
 
-<div id="nav" th:include="common/navbar"></div>
+<div id="nav" th:include="common/navbarB"></div>
 
 <!-- Nav bar spacer -->
 <br />
@@ -32,24 +32,20 @@
 <!-- End spacer -->
 
 <!-- Log in Error -->
-
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-        <div th:each="alert : ${errors}">
-            <div class="alert alert-danger" role="alert" th:text="${alert}"></div>
-        </div>
-    </div>
-    <div class="col-md-3"></div>
-</div>
-
 <div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div th:each="alert : ${errors}">
+                <div class="alert alert-danger" role="alert" th:text="${alert}"></div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
 
-
-    <footer>
-        <p>George Harris - Third year project - Basic Version - University of Southampton</p>
-    </footer>
 </div> <!-- /container -->
+
+<div id="footer" th:include="common/footer"></div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

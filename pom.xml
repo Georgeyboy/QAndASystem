@@ -28,7 +28,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Security / Account handling -->
+        <!-- Security (Account handling) -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
@@ -88,12 +88,19 @@
             <version>4.3.6.Final</version>
         </dependency>
 
-
         <!-- JPA(?) -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>4.1.4.RELEASE</version>
+        </dependency>
+
+
+        <!-- JSON conversion -->
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
         </dependency>
 
 

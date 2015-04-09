@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Q and A System</title>
+
+    <!-- Bootstrap -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/js/bootstrap.js}" rel="javascript">
+    <link th:href="@{/js/jquery.js}" rel="javascript">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+</head>
+
+
+<body>
+
+<div id="nav" th:include="common/navbarR"></div>
+
+<!-- Nav bar spacer -->
+<br />
+<br />
+<br />
+<!-- End spacer -->
+
+
+
+<div class="container well ">
+
+<div class="row">
+    <!--<div class="col-md-2"></div>-->
+    <div class="col-md-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2 style="text-align: center" class="panel-title" th:text="@{|Search results for '${searchPacket.query}'|}">Search Results</h2>
+
+            </div>
+            <div class="panel-body">
+                <div th:if="${!searchPacket.results.isEmpty()}">
+                    <div th:each="result : ${searchPacket.results}">
+                        <h5><a th:text="${result.title}" th:href="${result.link}"></a></h5>
+                    </div>
+                </div>
+                <div th:if="${searchPacket.results.isEmpty()}">
+                    <h4>This search returned no results. Please try using phrasing your query in another way</h4>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <nav >
+                    <ul class="pagination">
+                        <!-- 'Previous' button disabled if on first page -->
+                        <li th:if="${searchPacket.pageNumber == 1}" class="disabled">
+                            <a aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li th:if="${searchPacket.pageNumber != 1}">
+                            <a th:href="@{|/rep/searchResults/${(searchPacket.pageNumber - 1)}|}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <!-- Results -->
+
+                        <li th:each="i : ${#numbers.sequence( 1, searchPacket.maxPages)}">
+                            <a th:if="${searchPacket.pageNumber == i}" th:href="@{|/rep/searchResults/${i}|}" th:text="${i}"></a>
+                            <a th:if="${searchPacket.pageNumber != i}" th:href="@{|/rep/searchResults/${i}|}" th:text="${i}"></a></li>
+                        </li>
+
+                        <!-- 'Next' button disabled if on last page -->
+                        <li th:if="${searchPacket.pageNumber == searchPacket.maxPages}" class="disabled">
+                            <a th:href="@{|/rep/searchResults/${(searchPacket.pageNumber + 1)}|}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+
+                        <li th:if="${searchPacket.pageNumber != searchPacket.maxPages}" >
+                            <a aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Can't find the answer you're looking for?</h3>
+            </div>
+            <div class="panel-body">
+                <p>Why not ask a question yourself!</p>
+                <a class="btn btn-default" th:href="@{/rep/askQuestion}" role="button">Ask a question &raquo;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</div> <!-- /container -->
+
+<div id="footer" th:include="common/footer"></div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/js/bootstrap.min.js"></script>
+
+</body>
+
+
+</html>

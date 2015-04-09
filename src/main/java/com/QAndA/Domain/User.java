@@ -2,9 +2,7 @@ package com.QAndA.Domain;
 
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by George on 10/02/2015.
@@ -42,11 +40,34 @@ public class User {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	private Set<UserRole> userRole = new HashSet<UserRole>(0);
 
+	private Integer rp;
 
-//	Available User Roles
+	@ElementCollection
+	private Map<String, Integer> voteHistory;
+
+
+
+
+	//	Available User Roles
 	public static final int ROLE_USER = 1;
 	public static final int ROLE_ADMIN = 2;
 
+
+	public Map<String, Integer> getVoteHistory() {
+		return voteHistory;
+	}
+
+	public void setVoteHistory(Map<String, Integer> voteHistory) {
+		this.voteHistory = voteHistory;
+	}
+
+	public Integer getRp() {
+		return rp;
+	}
+
+	public void setRp(Integer rp) {
+		this.rp = rp;
+	}
 
 	public long getId() {
 		return id;
@@ -136,5 +157,22 @@ public class User {
 		this.password = password;
 	}
 
+	public Integer calculateLevel(){
+		if(rp <= 0){
+			return 0;
+		}else{
+			int level = 0;
+			int bracket = 10;
+			int rpTemp = rp.intValue();
+			do{
+				rpTemp = rpTemp - bracket;
+				level++;
+				bracket += 10;
+			}while(rpTemp > 0);
+			return level;
+		}
+
+
+	}
 
 }

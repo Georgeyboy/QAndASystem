@@ -23,7 +23,7 @@
 
 <body>
 
-<div id="nav" th:include="/common/navbar"></div>
+<div id="nav" th:include="common/navbarB"></div>
 
 <!-- Nav bar spacer -->
 <br />
@@ -34,13 +34,12 @@
 <!-- Log in Error -->
 <div class="container">
     <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div th:each="alert : ${loginerror}">
-                <div class="alert alert-danger" role="alert">There was a problem logging you in - please check your username and password and try logging in again.</div>
+                <div class="alert alert-danger" role="alert" th:text="${alert}"></div>
+                <!--TODO should this have the alert text?-->
             </div>
         </div>
-        <div class="col-md-3"></div>
     </div>
 </div>
 
@@ -49,9 +48,9 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1>Hello, World!</h1>
-        <p>Welcome to this question / answer service for a third year dissertation project. This is the basic version, with no reputation service. View the other version here (in prod).</p>
-        <p><a class="btn btn-primary btn-lg" href="/rep/" role="button">Reputation Version &raquo;</a></p>
+        <h1>Basic</h1>
+        <p>Welcome to this question / answer service for a third year dissertation project. This is the <b>basic</b> version, with no reputation service. View the reputation version here.</p>
+        <p><a class="btn btn-primary btn-lg" th:href="@{/rep/}" role="button">Reputation Version &raquo;</a></p>
     </div>
 </div>
 
@@ -75,12 +74,11 @@
         </div>
     </div>
 
-    <hr>
 
-    <footer>
-        <p>George Harris - Third year project - Basic Version - University of Southampton</p>
-    </footer>
+
 </div> <!-- /container -->
+
+<div id="footer" th:include="common/footer"></div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

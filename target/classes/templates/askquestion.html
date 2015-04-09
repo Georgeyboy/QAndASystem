@@ -23,7 +23,7 @@
 
 <body>
 
-<div id="nav" th:include="common/navbar"></div>
+<div id="nav" th:include="common/navbarB"></div>
 
 <!-- Nav bar spacer -->
 <br />
@@ -44,7 +44,7 @@
             </div>
 
 
-            <form id="questionform" name="questionform" th:action="@{/askQuestion}" th:object="${dto}" method="post">
+            <form id="questionform" name="questionform" th:action="@{/basic/askQuestion}" th:object="${dto}" method="post">
                 <div class="form-group">
                     <label for="title">Question Title</label>
                     <input type="text" class="form-control" id="title" placeholder="Title" th:field="*{title}">
@@ -61,11 +61,13 @@
         </div>
         <div class="col-md-6" th:if="${loggedIn == false}">
             <h2>You are not currently logged in!</h2>
-            <p>Please log in or <a th:href="@{/signUp}">sign up</a> to ask a question.</p>
+            <p>Please log in or <a th:href="@{/basic/signUp}">sign up</a> to ask a question.</p>
         </div>
         <div class="col-md-2"></div>
     </div>
 </div>
+
+<div id="footer" th:include="common/footer"></div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

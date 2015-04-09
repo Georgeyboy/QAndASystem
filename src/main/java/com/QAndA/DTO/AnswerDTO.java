@@ -13,7 +13,33 @@ public class AnswerDTO {
 	private String username;
 	private List<CommentDTO> comments;
 	private String date;
+	private Integer rp;
+	private Integer userRp;
+	private Integer userLevel;
 
+	public Integer getUserRp() {
+		return userRp;
+	}
+
+	public void setUserRp(Integer userRp) {
+		this.userRp = userRp;
+	}
+
+	public Integer getUserLevel() {
+		return userLevel;
+	}
+
+	public void setUserLevel(Integer userLevel) {
+		this.userLevel = userLevel;
+	}
+
+	public Integer getRp() {
+		return rp;
+	}
+
+	public void setRp(Integer rp) {
+		this.rp = rp;
+	}
 
 	public String getDescription() {
 		return description;

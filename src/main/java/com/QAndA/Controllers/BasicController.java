@@ -280,7 +280,7 @@ public class BasicController {
 		}
 
 		dto = accountService.getAccountDto(user);
-
+		model.addAttribute("alerts", new String[0]);
 		model.addAttribute("dto", dto);
 
 		return "account";
@@ -329,6 +329,43 @@ public class BasicController {
 
 
 		return "searchResults";
+	}
+
+	@RequestMapping(value = "/deleteQuestion/{id}")
+	public String deleteQuestion(final Model model, @PathVariable String id){
+
+		Question question = questionService.getQuestion(id);
+
+		if(!question.getUser().getUsername().equals(username())){
+//			User who initiated this method is not the question owner - therefore does not have permission to delete
+			String[] errors = {"You do not have permission to delete this question. Only the user who asked the question originally can delete it."};
+			model.addAttribute("errors", errors);
+			return "error";
+		}
+
+
+		questionService.deleteQuestion(id);
+
+		AccountDto dto;
+		User user = userDao.findByUsername(username());
+		if(user == null){
+			String[] errors = {"User not found. If you followed a link, the user may have been removed / deleted. If not, try checking the spelling of the username and try again."};
+			model.addAttribute("errors", errors);
+			return "error";
+		}
+
+		dto = accountService.getAccountDto(user);
+		String[] alerts = {"You successfully deleted a question"};
+		model.addAttribute("alerts", alerts);
+		model.addAttribute("dto", dto);
+		return "account";
+	}
+
+	@RequestMapping("/loginfail")
+	public String loginFail(final Model model){
+		String[] loginerrors = {"Unable to log in. Please check your username and password and try again."};
+		model.addAttribute("loginerror", loginerrors);
+		return "index";
 	}
 
 }

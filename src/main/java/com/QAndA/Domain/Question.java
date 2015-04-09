@@ -36,6 +36,17 @@ public class Question{
 
 	private Date date;
 
+	private Integer rp;
+
+	public Integer getRp() {
+		return rp;
+	}
+
+	public void setRp(Integer rp) {
+		this.rp = rp;
+	}
+
+
 	public long getId() {
 		return id;
 	}

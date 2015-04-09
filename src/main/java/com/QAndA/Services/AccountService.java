@@ -28,6 +28,8 @@ public class AccountService {
 		dto.setUsername(user.getUsername());
 		dto.setFirstName(user.getfName());
 		dto.setLastName(user.getlName());
+		dto.setRp(user.getRp());
+
 
 
 		for(Question question : user.getQuestions()){
@@ -40,4 +42,6 @@ public class AccountService {
 
 		return dto;
 	}
+
+
 }

@@ -7,6 +7,7 @@ import com.QAndA.DTO.CommentDTO;
 import com.QAndA.Domain.Answer;
 import com.QAndA.Domain.Comment;
 import com.QAndA.Domain.Question;
+import com.QAndA.Domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,9 @@ public class CommentService {
 	@Autowired
 	private AnswerService answerService;
 
+	@Autowired
+	private UserService userService;
+
 
 	public List<CommentDTO> commentsToDto(List<Comment> comments){
 
@@ -52,6 +56,9 @@ public class CommentService {
 		dto.setUser(String.valueOf(comment.getUsername()));
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy HH:mm");
 		dto.setDate(dateFormat.format(comment.getDate()));
+		User user = userService.findByUsername(comment.getUsername());
+		dto.setUserRp(user.getRp());
+		dto.setUserLevel(user.calculateLevel());
 		return dto;
 	}
 
