@@ -23,6 +23,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="accountR.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/rep/accountR.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.4841269" vertical-offset="0" max-vertical-offset="1955">
+              <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="questionR.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/rep/questionR.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -85,14 +95,53 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdvancedController.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AdvancedController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Controllers/AdvancedController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4122257" vertical-offset="2916" max-vertical-offset="8636">
+            <state vertical-scroll-proportion="-9.392858" vertical-offset="2916" max-vertical-offset="8636">
               <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbp3tq7i4s8pnp.public.qa_user" pinned="false" current="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/47b127ac/8f14d162-a35d-41b0-ab5d-42ad030bc797/dbp3tq7i4s8pnp.public.qa_user">
+          <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbp3tq7i4s8pnp.public.qa_question" pinned="false" current="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/47b127ac/8f14d162-a35d-41b0-ab5d-42ad030bc797/dbp3tq7i4s8pnp.public.qa_question">
+          <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbp3tq7i4s8pnp.public.qa_answer" pinned="false" current="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/47b127ac/8f14d162-a35d-41b0-ab5d-42ad030bc797/dbp3tq7i4s8pnp.public.qa_answer">
+          <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,8 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/QAndA/Services/SearchService.java" />
-        <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/Domain/Answer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/Domain/Question.java" />
@@ -158,6 +205,8 @@
         <option value="dbtable:/47b127ac/8f14d162-a35d-41b0-ab5d-42ad030bc797/dbp3tq7i4s8pnp.public.qa_user" />
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/Config.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/QAndA/Controllers/AdvancedController.java" />
+        <option value="dbtable:/47b127ac/8f14d162-a35d-41b0-ab5d-42ad030bc797/dbp3tq7i4s8pnp.public.qa_question" />
+        <option value="dbtable:/47b127ac/8f14d162-a35d-41b0-ab5d-42ad030bc797/dbp3tq7i4s8pnp.public.qa_answer" />
       </list>
     </option>
   </component>
@@ -1194,12 +1243,12 @@
       <workItem from="1428446578057" duration="1826000" />
       <workItem from="1428485064594" duration="16121000" />
       <workItem from="1428524675811" duration="7376000" />
-      <workItem from="1428588601786" duration="4910000" />
+      <workItem from="1428588601786" duration="5249000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="403180000" />
+    <option name="totallyTimeSpent" value="403519000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1283,21 +1332,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/thymeleaf/thymeleaf/2.1.3.RELEASE/thymeleaf-2.1.3.RELEASE.jar!/org/thymeleaf/standard/expression/StandardExpressionParser.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.2" vertical-offset="0" max-vertical-offset="1003">
-          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Services/AccountDetailsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1516165" vertical-offset="0" max-vertical-offset="897">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
@@ -1556,16 +1590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/rep/accountR.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.09354839" vertical-offset="993" max-vertical-offset="1955">
-          <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
-          <folding>
-            <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/DTO/CommentDTO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39473686" vertical-offset="0" max-vertical-offset="969">
@@ -1677,6 +1701,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1093" max-vertical-offset="1989">
+          <caret line="96" column="55" selection-start-line="96" selection-start-column="55" selection-end-line="96" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Controllers/AdvancedController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.392858" vertical-offset="2916" max-vertical-offset="8636">
+          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="dbDummy://dbtable:/47b127ac/8f14d162-a35d-41b0-ab5d-42ad030bc797/dbp3tq7i4s8pnp.public.qa_user">
       <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
         <state />
@@ -1688,10 +1730,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1093" max-vertical-offset="1989">
-          <caret line="96" column="55" selection-start-line="96" selection-start-column="55" selection-end-line="96" selection-end-column="55" />
+    <entry file="dbDummy://dbtable:/47b127ac/8f14d162-a35d-41b0-ab5d-42ad030bc797/dbp3tq7i4s8pnp.public.qa_question">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/47b127ac/8f14d162-a35d-41b0-ab5d-42ad030bc797/dbp3tq7i4s8pnp.public.qa_answer">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1716,13 +1772,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/QAndA/Controllers/AdvancedController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/rep/accountR.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4122257" vertical-offset="2916" max-vertical-offset="8636">
-          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="1.4841269" vertical-offset="0" max-vertical-offset="1955">
+          <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
