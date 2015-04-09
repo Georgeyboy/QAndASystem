@@ -48,7 +48,7 @@
             <div class="panel-body">
                 <div th:if="${!searchPacket.results.isEmpty()}">
                     <div th:each="result : ${searchPacket.results}">
-                        <h5><a th:text="${result.title}" th:href="${result.link}"></a></h5>
+                        <h5><a th:text="${result.title}" th:href="|@{|/basic${result.link}|}"></a></h5>
                     </div>
                 </div>
                 <div th:if="${searchPacket.results.isEmpty()}">

@@ -137,6 +137,8 @@
 
             <!-- Answers -->
             <div th:if="!${answers.isEmpty()}">
+                <h3 style="text-align: center">Answers</h3>
+
                 <div th:each="answer : ${answers}">
                     <div class="panel panel-primary">
                         <div class="panel-body" th:text="${answer.description}"></div>
